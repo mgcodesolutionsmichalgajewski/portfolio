@@ -1,4 +1,3 @@
-"use client";
 import {useEffect,useRef,useState,type FormEvent} from "react";
 import {ArrowUpRight,ArrowDown,ChevronLeft,ChevronRight,Menu,X,Mail,Phone,MapPin,Send,Award,Code2,Cloud} from "lucide-react";
 const nav=[['O mnie','#o-mnie'],['Doświadczenie','#doswiadczenie'],['Projekty','#projekty'],['Technologie','#technologie'],['Kontakt','#kontakt']];
