@@ -1,3 +1,4 @@
+import LinkedInIcon from './LinkedInIcon';
 import { useState, type FormEvent } from 'react';
 import { ArrowUpRight, Mail, Phone, MapPin, Send } from 'lucide-react';
 
@@ -76,11 +77,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
             >
-              <img
-                className="linkedin-logo"
-                src="https://cdn.simpleicons.org/linkedin/D8EAB9"
-                alt=""
-              />
+              <LinkedInIcon className="linkedin-logo" />
               LinkedIn <ArrowUpRight size={17} />
             </a>
           </div>

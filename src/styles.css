@@ -701,6 +701,14 @@ h2 {
   height: 18px;
   flex: none;
 }
+.inline-link .linkedin-logo {
+  color: #0a66c2;
+}
+.contact-info .linkedin-logo {
+  color: #d8eab9;
+  width: 18px;
+  height: 18px;
+}
 .contact form {
   background: #fff;
   color: var(--ink);

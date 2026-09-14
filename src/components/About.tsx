@@ -1,3 +1,4 @@
+import LinkedInIcon from './LinkedInIcon';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function About() {
@@ -32,7 +33,7 @@ export default function About() {
           target="_blank"
           rel="noreferrer"
         >
-          <img className="linkedin-logo" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" />
+          <LinkedInIcon className="linkedin-logo" />
           Poznaj mnie na LinkedIn <ArrowUpRight size={17} />
         </a>
       </div>
