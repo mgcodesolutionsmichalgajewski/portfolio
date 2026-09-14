@@ -1,11 +1,10 @@
-const logo = (name: string, variant = 'original') =>
-  `https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/${name}/${name}-${variant}.svg`;
+const logo = (name: string) => `/icons/${name}.svg`;
 export const skillGroups = [
   {
     name: 'Atlassian & Forge',
     description: 'Aplikacje i rozszerzenia dla ekosystemu Atlassian.',
     items: [
-      { name: 'Atlassian Forge', icon: 'https://cdn.simpleicons.org/atlassian/0052CC' },
+      { name: 'Atlassian Forge', icon: logo('atlassian') },
       { name: 'Jira', icon: logo('jira') },
       { name: 'Jira Service Management', icon: logo('jira') },
       { name: 'Confluence', icon: logo('confluence') },
@@ -35,7 +34,7 @@ export const skillGroups = [
     name: 'Dane & chmura',
     description: 'Bazy danych i środowiska aplikacyjne.',
     items: [
-      { name: 'AWS', icon: logo('amazonwebservices', 'original-wordmark') },
+      { name: 'AWS', icon: logo('amazonwebservices') },
       { name: 'PostgreSQL', icon: logo('postgresql') },
       { name: 'Terraform', icon: logo('terraform') },
     ],
