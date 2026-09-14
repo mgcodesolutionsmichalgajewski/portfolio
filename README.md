@@ -18,3 +18,10 @@ Formularz kontaktowy korzysta z FormSubmit. Adres odbiorcy wymaga jednorazowej a
 ## Formatowanie kodu
 
 Projekt używa Prettier. Uruchom `npm run format`, aby sformatować pliki, lub `npm run format:check`, aby sprawdzić ich format bez zmian.
+
+## Struktura kodu
+
+- `src/App.tsx` — układ strony i stan galerii.
+- `src/components/` — osobne sekcje strony, formularz i modal galerii.
+- `src/data/` — nawigacja, technologie i lista zrzutów ekranu.
+- `src/styles.css` — style strony.
