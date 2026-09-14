@@ -109,12 +109,7 @@ export default function Contact() {
             </label>
             <label>
               Wiadomość
-              <textarea
-                name="message"
-                rows={5}
-                placeholder="Opowiedz mi o swoim projekcie..."
-                required
-              />
+              <textarea name="message" rows={5} placeholder="Napisz swoją wiadomość..." required />
             </label>
             <button className="btn primary" type="submit" disabled={sendStatus === 'sending'}>
               {sendStatus === 'sending' ? 'Wysyłanie…' : 'Wyślij wiadomość'} <Send size={17} />
