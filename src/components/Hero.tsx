@@ -1,4 +1,5 @@
 import { ArrowUpRight, ArrowDown, Code2, Cloud } from 'lucide-react';
+import { publicAsset } from '../publicAsset';
 
 export default function Hero() {
   return (
@@ -36,7 +37,7 @@ export default function Hero() {
           <div className="circle c1" />
           <div className="circle c2" />
           <div className="portrait">
-            <img src="/profil.jpg" alt="Michał Gajewski" />
+            <img src={publicAsset('profil.jpg')} alt="Michał Gajewski" />
           </div>
           <div className="floating float-a">
             <Code2 />

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { screenshots, type Gallery } from '../data/screenshots';
+import { publicAsset } from '../publicAsset';
 
 export default function Projects({
   onOpenGallery,
@@ -24,12 +25,12 @@ export default function Projects({
           <div className="project-art doc-art">
             <img
               className="market-shot market-left"
-              src="/docusign/01-podpis.png"
+              src={publicAsset('docusign/01-podpis.png')}
               alt="Akcja Sign with DocuSign w zgłoszeniu Jira"
             />
             <img
               className="market-shot market-right"
-              src="/docusign/02-lokalizacja.png"
+              src={publicAsset('docusign/02-lokalizacja.png')}
               alt="Ustawienia podpisu w aplikacji DocuSign for Jira"
             />
             <div className="art-note">Zrzuty z Atlassian Marketplace</div>
@@ -75,17 +76,17 @@ export default function Projects({
           <div className="project-art cat-art">
             <img
               className="app-shot shot-back-left"
-              src="/kicia-kocia/04-lista-zyczen.png"
+              src={publicAsset('kicia-kocia/04-lista-zyczen.png')}
               alt="Lista życzeń w aplikacji Kicia Kocia Books"
             />
             <img
               className="app-shot shot-back-right"
-              src="/kicia-kocia/05-co-czytamy.png"
+              src={publicAsset('kicia-kocia/05-co-czytamy.png')}
               alt="Losowanie książki do czytania w aplikacji"
             />
             <img
               className="app-shot shot-front"
-              src="/kicia-kocia/01-start.png"
+              src={publicAsset('kicia-kocia/01-start.png')}
               alt="Biblioteczka Kicia Kocia Books"
             />
             <div className="art-note">Zrzuty z działającej aplikacji iOS</div>

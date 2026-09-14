@@ -1,4 +1,6 @@
-const logo = (name: string) => `/icons/${name}.svg`;
+import { publicAsset } from '../publicAsset';
+
+const logo = (name: string) => publicAsset(`icons/${name}.svg`);
 export const skillGroups = [
   {
     name: 'Atlassian & Forge',

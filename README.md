@@ -25,3 +25,11 @@ Projekt używa Prettier. Uruchom `npm run format`, aby sformatować pliki, lub `
 - `src/components/` — osobne sekcje strony, formularz i modal galerii.
 - `src/data/` — nawigacja, technologie i lista zrzutów ekranu.
 - `src/styles.css` — style strony.
+
+## GitHub Pages
+
+Projekt jest przygotowany do publikacji pod adresem `https://mgcodesolutionsmichalgajewski.github.io/portfolio/`.
+Po wysłaniu zmian do gałęzi `main` otwórz w repozytorium **Settings → Pages** i ustaw
+**Build and deployment → Source: GitHub Actions**. Workflow w
+`.github/workflows/deploy.yml` zbuduje aplikację i opublikuje katalog `dist`.
+Status publikacji można sprawdzić w zakładce **Actions**.
