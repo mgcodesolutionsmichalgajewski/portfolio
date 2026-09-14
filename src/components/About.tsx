@@ -32,6 +32,7 @@ export default function About() {
           target="_blank"
           rel="noreferrer"
         >
+          <img className="linkedin-logo" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" />
           Poznaj mnie na LinkedIn <ArrowUpRight size={17} />
         </a>
       </div>

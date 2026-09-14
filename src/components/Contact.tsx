@@ -76,6 +76,11 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
             >
+              <img
+                className="linkedin-logo"
+                src="https://cdn.simpleicons.org/linkedin/D8EAB9"
+                alt=""
+              />
               LinkedIn <ArrowUpRight size={17} />
             </a>
           </div>

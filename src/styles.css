@@ -687,11 +687,19 @@ h2 {
 }
 .contact-info .linkedin {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #d8eab9;
   font-weight: 800;
   border-bottom: 1px solid #9fb888;
   margin-top: 13px;
   padding-bottom: 6px;
+}
+.linkedin-logo {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
 }
 .contact form {
   background: #fff;
