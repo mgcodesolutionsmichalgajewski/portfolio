@@ -1,0 +1,135 @@
+export const en = {
+  navigation: ['Home', 'About', 'Experience', 'Projects', 'Technologies', 'Contact'],
+  accessibility: {
+    chooseLanguage: 'Choose language',
+    polish: 'Polish version',
+    english: 'English version',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    backToTop: 'Back to top',
+    closePreview: 'Close preview',
+    previousScreenshot: 'Previous screenshot',
+    nextScreenshot: 'Next screenshot',
+    screenshots: 'Screenshots',
+  },
+  hero: {
+    eyebrow: 'Software engineer · Atlassian · Poland',
+    title: 'I build solutions',
+    titleAccent: 'that make work easier.',
+    description:
+      'Hi, I’m Michał. I build applications for the Atlassian ecosystem, combining backend experience with React, Forge and AWS.',
+    projectsButton: 'Explore my projects',
+    aboutButton: 'More about me',
+    programmerYears: 'years as a software engineer',
+    atlassianYears: 'years in the Atlassian ecosystem',
+    specialization: 'Specialization',
+    technologies: 'Technologies',
+    strip: 'I work where product meets technology',
+  },
+  about: {
+    kicker: 'About me',
+    title: 'An engineering mindset.',
+    titleAccent: 'Human-centred solutions.',
+    paragraphs: [
+      'I hold a master’s degree in Computer Science from Lodz University of Technology. I started with Java backend development using Spring, Hibernate and PostgreSQL, then expanded into frontend work with React and Redux.',
+      'I have worked professionally as a software engineer for 10 years. For the past six years, I have developed applications that extend Jira, Jira Service Management and Confluence. Over the last two years, I have focused on Atlassian Forge, React and Node.js. I also build and maintain infrastructure on AWS.',
+      'Outside work, I develop my own mobile applications as a space for experimentation and testing new ideas.',
+    ],
+    linkedIn: 'Find me on LinkedIn',
+  },
+  experience: {
+    kicker: 'Career path',
+    title: 'Experience that',
+    titleAccent: 'turns into a product.',
+    description: 'From a strong backend foundation to end-to-end cloud application development.',
+    timeline: [
+      {
+        period: 'Last 2 years',
+        title: 'Atlassian Forge & cloud applications',
+        description:
+          'Developing Atlassian product extensions with Forge, React and Node.js, including integrations and AWS infrastructure.',
+      },
+      {
+        period: 'For 6 years',
+        title: 'Atlassian ecosystem',
+        description:
+          'Developing applications for Jira, Jira Service Management and Confluence, including integrations with external services.',
+      },
+      {
+        period: 'Earlier',
+        title: 'Full-stack foundations',
+        description:
+          'Java, Spring and PostgreSQL backend development, followed by user interface development with React and Redux.',
+      },
+    ],
+  },
+  projects: {
+    kicker: 'Selected projects',
+    title: 'Real-world solutions.',
+    titleAccent: 'Ideas after hours.',
+    description: 'Examples of client product work and my own experiments.',
+    commercial: 'Commercial project',
+    personal: 'Personal project',
+    marketplaceScreenshots: 'Screenshots from Atlassian Marketplace',
+    iosScreenshots: 'Screenshots from the working iOS app',
+    docusignDescription:
+      'For Transition Technologies PSC, I develop an application that connects document workflows in Jira and Jira Service Management with DocuSign electronic signatures.',
+    marketplaceLink: 'View on Atlassian Marketplace',
+    kiciaDescription:
+      'My React Native application for managing a collection of Kicia Kocia books. It lets users search titles, mark owned books, create a wish list and randomly choose a book to read together.',
+    alt: {
+      docusignAction: 'Sign with DocuSign action in a Jira issue',
+      docusignSettings: 'Signing settings in DocuSign for Jira',
+      wishList: 'Wish list in the Kicia Kocia Books app',
+      drawing: 'Choosing a book to read in the app',
+      library: 'Kicia Kocia Books library',
+    },
+    gallery: {
+      docusign: ['Jira action', 'Signing options', 'History'],
+      kicia: ['Library', 'Details', 'Shelf view', 'Wish list', 'What shall we read?'],
+    },
+  },
+  technologies: {
+    kicker: 'My toolkit',
+    title: 'Technologies selected',
+    titleAccent: 'for the task.',
+    description:
+      'I work across the entire application stack — from the interface and logic to infrastructure.',
+    groups: [
+      {
+        name: 'Atlassian & Forge',
+        description: 'Applications and extensions for the Atlassian ecosystem.',
+      },
+      { name: 'Frontend', description: 'Web interfaces and mobile applications.' },
+      { name: 'Backend', description: 'Application logic, integrations and APIs.' },
+      { name: 'Data & cloud', description: 'Databases and application environments.' },
+    ],
+  },
+  certificates: {
+    kicker: 'Verified skills',
+    title: 'I keep learning',
+    titleAccent: 'continuously.',
+    description: 'My certifications can be verified directly on Credly.',
+  },
+  contact: {
+    kicker: 'Contact',
+    title: "Let's stay",
+    titleAccent: 'in touch.',
+    description: 'Tell me briefly what you need. I will be happy to see how I can help.',
+    country: 'Poland',
+    fullName: 'Full name',
+    fullNamePlaceholder: 'What is your name?',
+    email: 'Email address',
+    emailPlaceholder: 'you@email.com',
+    subject: 'Subject',
+    subjectPlaceholder: 'What would you like to discuss?',
+    message: 'Message',
+    messagePlaceholder: 'Write your message...',
+    sending: 'Sending…',
+    send: 'Send message',
+    sent: 'Your message has been received. Thank you!',
+    error: 'The message could not be sent. Please try again or email me directly.',
+    idle: 'Your message will be sent without leaving this page.',
+    provider: 'Delivery is handled by FormSubmit.',
+  },
+};

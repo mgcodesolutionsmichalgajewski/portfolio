@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { publicAsset } from '../publicAsset';
 
 const certificates = [
@@ -15,16 +16,17 @@ const certificates = [
 ];
 
 export default function Certificates() {
+  const { t } = useTranslation();
   return (
     <section className="section wrap two certs" id="certyfikaty">
       <div data-reveal>
-        <span className="kicker">05 / Potwierdzone umiejętności</span>
+        <span className="kicker">05 / {t('certificates.kicker')}</span>
         <h2>
-          Rozwijam się
+          {t('certificates.title')}
           <br />
-          <em>nieustannie.</em>
+          <em>{t('certificates.titleAccent')}</em>
         </h2>
-        <p>Moje certyfikaty można zweryfikować bezpośrednio w serwisie Credly.</p>
+        <p>{t('certificates.description')}</p>
       </div>
       <div className="cert-list">
         {certificates.map(({ id, name, image }) => (

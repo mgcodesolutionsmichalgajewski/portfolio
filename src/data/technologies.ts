@@ -1,7 +1,7 @@
 import { publicAsset } from '../publicAsset';
 
 const logo = (name: string) => publicAsset(`icons/${name}.svg`);
-export const skillGroups = [
+const skillGroups = [
   {
     name: 'Atlassian & Forge',
     description: 'Aplikacje i rozszerzenia dla ekosystemu Atlassian.',
@@ -42,3 +42,10 @@ export const skillGroups = [
     ],
   },
 ];
+
+export const getSkillGroups = (texts: Array<{ name: string; description: string }>) =>
+  skillGroups.map((group, index) => ({
+    ...group,
+    name: texts[index].name,
+    description: texts[index].description,
+  }));

@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { nav } from '../data/navigation';
+import { navigationHrefs } from '../data/navigation';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
+  const language = i18n.resolvedLanguage === 'en' ? 'en' : 'pl';
+  const labels = t('navigation', { returnObjects: true }) as string[];
+  const nav = labels.map((label, index) => [label, navigationHrefs[index]] as const);
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const navigationInProgress = useRef(false);
@@ -10,8 +15,8 @@ export default function Header() {
   const navigationCleanup = useRef<(() => void) | undefined>(undefined);
 
   useEffect(() => {
-    const sections = nav
-      .map(([, href]) => document.querySelector<HTMLElement>(href))
+    const sections = navigationHrefs
+      .map((href) => document.querySelector<HTMLElement>(href))
       .filter((section): section is HTMLElement => Boolean(section));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,17 +40,31 @@ export default function Header() {
     setOpen(false);
     setActiveSection(href);
     navigationInProgress.current = true;
-
     const finishNavigation = () => {
       navigationInProgress.current = false;
       window.clearTimeout(navigationTimeout.current);
       window.removeEventListener('scrollend', finishNavigation);
       navigationCleanup.current = undefined;
     };
-
     navigationCleanup.current = finishNavigation;
     window.addEventListener('scrollend', finishNavigation, { once: true });
     navigationTimeout.current = window.setTimeout(finishNavigation, 1500);
+  }
+
+  async function changeLanguage(language: 'pl' | 'en') {
+    const currentSection = document.querySelector<HTMLElement>(activeSection || '#start');
+    const sectionTop = currentSection?.getBoundingClientRect().top;
+    await i18n.changeLanguage(language);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (!currentSection || sectionTop === undefined) return;
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollBy(0, currentSection.getBoundingClientRect().top - sectionTop);
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+      });
+    });
   }
 
   return (
@@ -68,9 +87,31 @@ export default function Header() {
             </a>
           ))}
         </nav>
+        <div className="language-switch" aria-label={t('accessibility.chooseLanguage')}>
+          <button
+            type="button"
+            className={language === 'pl' ? 'active' : undefined}
+            aria-pressed={language === 'pl'}
+            aria-label={t('accessibility.polish')}
+            title={t('accessibility.polish')}
+            onClick={() => void changeLanguage('pl')}
+          >
+            <span aria-hidden="true">🇵🇱</span>
+          </button>
+          <button
+            type="button"
+            className={language === 'en' ? 'active' : undefined}
+            aria-pressed={language === 'en'}
+            aria-label={t('accessibility.english')}
+            title={t('accessibility.english')}
+            onClick={() => void changeLanguage('en')}
+          >
+            <span aria-hidden="true">🇬🇧</span>
+          </button>
+        </div>
         <button
           className="menu"
-          aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
+          aria-label={open ? t('accessibility.closeMenu') : t('accessibility.openMenu')}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
         >

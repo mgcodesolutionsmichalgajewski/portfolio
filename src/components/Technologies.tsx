@@ -1,21 +1,25 @@
-import { skillGroups } from '../data/technologies';
+import { getSkillGroups } from '../data/technologies';
+import { useTranslation } from 'react-i18next';
+
+type TechnologyGroupText = { name: string; description: string };
 
 export default function Technologies() {
+  const { t } = useTranslation();
+  const groups = t('technologies.groups', { returnObjects: true }) as TechnologyGroupText[];
+  const skillGroups = getSkillGroups(groups);
   return (
     <section className="section tinted" id="technologie">
       <div className="wrap">
         <div className="heading">
           <div>
-            <span className="kicker">04 / Mój warsztat</span>
+            <span className="kicker">04 / {t('technologies.kicker')}</span>
             <h2>
-              Technologie dobrane
+              {t('technologies.title')}
               <br />
-              <em>do zadania.</em>
+              <em>{t('technologies.titleAccent')}</em>
             </h2>
           </div>
-          <p>
-            Pracuję w całym przekroju aplikacji — od interfejsu, przez logikę, po infrastrukturę.
-          </p>
+          <p>{t('technologies.description')}</p>
         </div>
         <div className="technology-groups">
           {skillGroups.map((group) => (

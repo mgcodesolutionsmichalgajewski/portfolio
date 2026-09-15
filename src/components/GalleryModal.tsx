@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { screenshots, type Gallery } from '../data/screenshots';
+import { getScreenshots, type Gallery } from '../data/screenshots';
+import { useTranslation } from 'react-i18next';
 
 type GalleryState = { type: Gallery; index: number };
-
 type Props = {
   gallery: GalleryState;
   onChange: (gallery: GalleryState) => void;
@@ -11,15 +11,17 @@ type Props = {
 };
 
 export default function GalleryModal({ gallery, onChange, onClose }: Props) {
+  const { t } = useTranslation();
   const closeButton = useRef<HTMLButtonElement>(null);
-  const items = screenshots[gallery.type];
+  const labels = t('projects.gallery', { returnObjects: true }) as {
+    docusign: string[];
+    kicia: string[];
+  };
+  const items = getScreenshots(labels)[gallery.type];
   const current = items[gallery.index];
   const title = gallery.type === 'kicia' ? 'Kicia Kocia Books' : 'DocuSign for Jira';
-
-  const move = (direction: number) => {
+  const move = (direction: number) =>
     onChange({ ...gallery, index: (gallery.index + direction + items.length) % items.length });
-  };
-
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -35,7 +37,6 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [gallery]);
-
   return (
     <div
       className="gallery-backdrop"
@@ -47,7 +48,7 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
         className="gallery-dialog"
         role="dialog"
         aria-modal="true"
-        aria-label={`Zrzuty ekranu: ${title}`}
+        aria-label={`${t('accessibility.screenshots')}: ${title}`}
       >
         <div className="gallery-top">
           <div>
@@ -60,7 +61,7 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
             ref={closeButton}
             className="gallery-close"
             type="button"
-            aria-label="Zamknij podgląd"
+            aria-label={t('accessibility.closePreview')}
             onClick={onClose}
           >
             <X size={22} />
@@ -70,7 +71,7 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
           <button
             className="gallery-arrow"
             type="button"
-            aria-label="Poprzedni zrzut"
+            aria-label={t('accessibility.previousScreenshot')}
             onClick={() => move(-1)}
           >
             <ChevronLeft />
@@ -79,7 +80,7 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
           <button
             className="gallery-arrow"
             type="button"
-            aria-label="Następny zrzut"
+            aria-label={t('accessibility.nextScreenshot')}
             onClick={() => move(1)}
           >
             <ChevronRight />

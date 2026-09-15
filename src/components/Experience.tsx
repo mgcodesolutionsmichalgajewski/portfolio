@@ -1,42 +1,32 @@
+import { useTranslation } from 'react-i18next';
+
+type TimelineItem = { period: string; title: string; description: string };
+
 export default function Experience() {
+  const { t } = useTranslation();
+  const timeline = t('experience.timeline', { returnObjects: true }) as TimelineItem[];
   return (
     <section className="section tinted" id="doswiadczenie">
       <div className="wrap">
         <div className="heading">
           <div>
-            <span className="kicker">02 / Droga zawodowa</span>
+            <span className="kicker">02 / {t('experience.kicker')}</span>
             <h2>
-              Doświadczenie, które
+              {t('experience.title')}
               <br />
-              <em>przekłada się na produkt.</em>
+              <em>{t('experience.titleAccent')}</em>
             </h2>
           </div>
-          <p>Od mocnego zaplecza backendowego do kompleksowego tworzenia aplikacji w chmurze.</p>
+          <p>{t('experience.description')}</p>
         </div>
         <div className="timeline">
-          {[
-            [
-              'Ostatnie 2 lata',
-              'Atlassian Forge & aplikacje cloud',
-              'Rozwój rozszerzeń produktów Atlassian z użyciem Forge, React i Node.js. Praca przy integracjach oraz infrastrukturze AWS.',
-            ],
-            [
-              'Od 6 lat',
-              'Ekosystem Atlassian',
-              'Rozwój aplikacji dla Jira, Jira Service Management i Confluence, w tym integracja z usługami zewnętrznymi.',
-            ],
-            [
-              'Wcześniej',
-              'Fundamenty full-stack',
-              'Backend w Java, Spring i PostgreSQL, następnie rozwój interfejsów w React i Redux.',
-            ],
-          ].map(([period, title, desc]) => (
-            <div className="time-item" key={title}>
+          {timeline.map((item) => (
+            <div className="time-item" key={item.title}>
               <span className="dot" />
-              <strong>{period}</strong>
+              <strong>{item.period}</strong>
               <div>
-                <h3>{title}</h3>
-                <p>{desc}</p>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
             </div>
           ))}

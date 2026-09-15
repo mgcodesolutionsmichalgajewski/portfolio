@@ -1,14 +1,17 @@
-import LinkedInIcon from './LinkedInIcon';
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import LinkedInIcon from './LinkedInIcon';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  async function send(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const d = new FormData(form);
-    if (String(d.get('_honey') || '').trim()) {
+
+  async function send(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    if (String(data.get('_honey') || '').trim()) {
       setSendStatus('sent');
       return;
     }
@@ -20,11 +23,11 @@ export default function Contact() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            name: String(d.get('name') || '').trim(),
-            email: String(d.get('email') || '').trim(),
-            subject: String(d.get('subject') || '').trim(),
-            _subject: String(d.get('subject') || '').trim(),
-            message: String(d.get('message') || '').trim(),
+            name: String(data.get('name') || '').trim(),
+            email: String(data.get('email') || '').trim(),
+            subject: String(data.get('subject') || '').trim(),
+            _subject: String(data.get('subject') || '').trim(),
+            message: String(data.get('message') || '').trim(),
             _honey: '',
             _url: window.location.href,
           }),
@@ -32,24 +35,31 @@ export default function Contact() {
       );
       const result = (await response.json()) as { success?: boolean | string };
       if (!response.ok || (result.success !== true && result.success !== 'true'))
-        throw new Error('Wysyłka nie powiodła się');
+        throw new Error('Message could not be sent');
       setSendStatus('sent');
       form.reset();
     } catch {
       setSendStatus('error');
     }
   }
+
+  const statusMessage =
+    sendStatus === 'sent'
+      ? t('contact.sent')
+      : sendStatus === 'error'
+        ? t('contact.error')
+        : t('contact.idle');
   return (
     <section className="section contact" id="kontakt">
       <div className="wrap">
         <div className="contact-heading" data-reveal>
-          <span className="kicker">06 / Kontakt</span>
+          <span className="kicker">06 / {t('contact.kicker')}</span>
           <h2>
-            Zostańmy
+            {t('contact.title')}
             <br />
-            <em>w kontakcie.</em>
+            <em>{t('contact.titleAccent')}</em>
           </h2>
-          <p>Napisz kilka słów o tym, czego potrzebujesz. Chętnie sprawdzę, jak mogę pomóc.</p>
+          <p>{t('contact.description')}</p>
         </div>
         <div className="contact-grid">
           <div className="contact-info" data-reveal>
@@ -68,7 +78,7 @@ export default function Contact() {
               <MapPin />
               <span>
                 ul. Broniewskiego 9<br />
-                99-418 Bełchów, Polska
+                99-418 Bełchów, {t('contact.country')}
               </span>
             </div>
             <a
@@ -91,39 +101,46 @@ export default function Contact() {
             />
             <div className="form-row">
               <label>
-                Imię i nazwisko
-                <input name="name" placeholder="Jak się nazywasz?" required autoComplete="name" />
+                {t('contact.fullName')}
+                <input
+                  name="name"
+                  placeholder={t('contact.fullNamePlaceholder')}
+                  required
+                  autoComplete="name"
+                />
               </label>
               <label>
-                Adres e-mail
+                {t('contact.email')}
                 <input
                   name="email"
                   type="email"
-                  placeholder="twoj@email.pl"
+                  placeholder={t('contact.emailPlaceholder')}
                   required
                   autoComplete="email"
                 />
               </label>
             </div>
             <label>
-              Temat
-              <input name="subject" placeholder="O czym chcesz porozmawiać?" required />
+              {t('contact.subject')}
+              <input name="subject" placeholder={t('contact.subjectPlaceholder')} required />
             </label>
             <label>
-              Wiadomość
-              <textarea name="message" rows={5} placeholder="Napisz swoją wiadomość..." required />
+              {t('contact.message')}
+              <textarea
+                name="message"
+                rows={5}
+                placeholder={t('contact.messagePlaceholder')}
+                required
+              />
             </label>
             <button className="btn primary" type="submit" disabled={sendStatus === 'sending'}>
-              {sendStatus === 'sending' ? 'Wysyłanie…' : 'Wyślij wiadomość'} <Send size={17} />
+              {sendStatus === 'sending' ? t('contact.sending') : t('contact.send')}{' '}
+              <Send size={17} />
             </button>
             <p className={`form-note ${sendStatus === 'error' ? 'error' : ''}`} role="status">
-              {sendStatus === 'sent'
-                ? 'Wiadomość została przyjęta. Dziękuję!'
-                : sendStatus === 'error'
-                  ? 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na podany adres.'
-                  : 'Wiadomość zostanie wysłana bez opuszczania strony.'}
+              {statusMessage}
             </p>
-            <p className="form-provider">Wysyłkę obsługuje FormSubmit.</p>
+            <p className="form-provider">{t('contact.provider')}</p>
           </form>
         </div>
       </div>

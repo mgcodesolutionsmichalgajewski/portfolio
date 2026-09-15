@@ -1,8 +1,8 @@
-export const nav = [
-  ['Start', '#start'],
-  ['O mnie', '#o-mnie'],
-  ['Doświadczenie', '#doswiadczenie'],
-  ['Projekty', '#projekty'],
-  ['Technologie', '#technologie'],
-  ['Kontakt', '#kontakt'],
+export const navigationHrefs = [
+  '#start',
+  '#o-mnie',
+  '#doswiadczenie',
+  '#projekty',
+  '#technologie',
+  '#kontakt',
 ];

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
-import { screenshots, type Gallery } from '../data/screenshots';
+import { getScreenshots, type Gallery } from '../data/screenshots';
+import { useTranslation } from 'react-i18next';
 import { publicAsset } from '../publicAsset';
 
 export default function Projects({
@@ -7,18 +8,24 @@ export default function Projects({
 }: {
   onOpenGallery: (type: Gallery, index: number) => void;
 }) {
+  const { t } = useTranslation();
+  const galleryLabels = t('projects.gallery', { returnObjects: true }) as {
+    docusign: string[];
+    kicia: string[];
+  };
+  const screenshots = getScreenshots(galleryLabels);
   return (
     <section className="section wrap" id="projekty">
       <div className="heading" data-reveal>
         <div>
-          <span className="kicker">03 / Wybrane projekty</span>
+          <span className="kicker">03 / {t('projects.kicker')}</span>
           <h2>
-            Rozwiązania z życia.
+            {t('projects.title')}
             <br />
-            <em>Pomysły po godzinach.</em>
+            <em>{t('projects.titleAccent')}</em>
           </h2>
         </div>
-        <p>Przykłady pracy przy produkcie dla klienta i własnych eksperymentów.</p>
+        <p>{t('projects.description')}</p>
       </div>
       <div className="projects">
         <article className="project project-commercial" data-reveal>
@@ -26,25 +33,22 @@ export default function Projects({
             <img
               className="market-shot market-left"
               src={publicAsset('docusign/01-podpis.png')}
-              alt="Akcja Sign with DocuSign w zgłoszeniu Jira"
+              alt={t('projects.alt.docusignAction')}
             />
             <img
               className="market-shot market-right"
               src={publicAsset('docusign/02-lokalizacja.png')}
-              alt="Ustawienia podpisu w aplikacji DocuSign for Jira"
+              alt={t('projects.alt.docusignSettings')}
             />
-            <div className="art-note">Zrzuty z Atlassian Marketplace</div>
+            <div className="art-note">{t('projects.marketplaceScreenshots')}</div>
           </div>
           <div className="project-body">
             <div className="project-meta">
-              <span>Projekt komercyjny</span>
+              <span>{t('projects.commercial')}</span>
               <span>01 / 02</span>
             </div>
             <h3>DocuSign for Jira</h3>
-            <p>
-              Dla Transition Technologies PSC rozwijam aplikację, która łączy obieg dokumentów w
-              Jira i Jira Service Management z podpisem elektronicznym DocuSign.
-            </p>
+            <p>{t('projects.docusignDescription')}</p>
             <div className="tags">
               <span>Jira</span>
               <span>JSM</span>
@@ -68,7 +72,7 @@ export default function Projects({
               target="_blank"
               rel="noreferrer"
             >
-              Zobacz w Atlassian Marketplace <ArrowUpRight size={17} />
+              {t('projects.marketplaceLink')} <ArrowUpRight size={17} />
             </a>
           </div>
         </article>
@@ -77,31 +81,27 @@ export default function Projects({
             <img
               className="app-shot shot-back-left"
               src={publicAsset('kicia-kocia/04-lista-zyczen.png')}
-              alt="Lista życzeń w aplikacji Kicia Kocia Books"
+              alt={t('projects.alt.wishList')}
             />
             <img
               className="app-shot shot-back-right"
               src={publicAsset('kicia-kocia/05-co-czytamy.png')}
-              alt="Losowanie książki do czytania w aplikacji"
+              alt={t('projects.alt.drawing')}
             />
             <img
               className="app-shot shot-front"
               src={publicAsset('kicia-kocia/01-start.png')}
-              alt="Biblioteczka Kicia Kocia Books"
+              alt={t('projects.alt.library')}
             />
-            <div className="art-note">Zrzuty z działającej aplikacji iOS</div>
+            <div className="art-note">{t('projects.iosScreenshots')}</div>
           </div>
           <div className="project-body">
             <div className="project-meta">
-              <span>Projekt własny</span>
+              <span>{t('projects.personal')}</span>
               <span>02 / 02</span>
             </div>
             <h3>Kicia Kocia Books</h3>
-            <p>
-              Autorska aplikacja w React Native do prowadzenia kolekcji książek z serii Kicia Kocia.
-              Pozwala wyszukiwać tytuły, oznaczać posiadane egzemplarze, tworzyć listę życzeń i
-              losować książkę do wspólnego czytania.
-            </p>
+            <p>{t('projects.kiciaDescription')}</p>
             <div className="tags">
               <span>React Native</span>
               <span>Expo</span>

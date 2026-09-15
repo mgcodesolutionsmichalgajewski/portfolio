@@ -11,8 +11,10 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Technologies from './components/Technologies';
 import type { Gallery } from './data/screenshots';
+import { useTranslation } from 'react-i18next';
 
 export default function App() {
+  const { t, i18n } = useTranslation();
   const [gallery, setGallery] = useState<{ type: Gallery; index: number } | null>(null);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function App() {
     );
     elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
-  }, []);
+  }, [i18n.language]);
 
   return (
     <>
@@ -51,7 +53,7 @@ export default function App() {
         <GalleryModal gallery={gallery} onChange={setGallery} onClose={() => setGallery(null)} />
       )}
       <Footer />
-      <a className="back-to-top" href="#start" aria-label="Wróć na górę">
+      <a className="back-to-top" href="#start" aria-label={t('accessibility.backToTop')}>
         <ArrowUp size={20} />
       </a>
     </>

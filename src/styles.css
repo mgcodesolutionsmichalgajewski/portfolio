@@ -67,12 +67,40 @@ textarea {
 }
 .links {
   display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
-  gap: 25px; /* Odstęp między elementami układu flex lub grid: 25px. */
+  gap: 18px; /* Zmniejsza odstęp między pozycjami menu, zachowując ich naturalną szerokość. */
   margin-left: auto; /* Zewnętrzny odstęp po lewej stronie elementu: auto. */
 }
 .links a {
   font-size: 13px; /* Rozmiar znaków tekstu: 13px. */
   font-weight: 700; /* Grubość znaków tekstu: 700. */
+}
+.language-switch {
+  display: flex; /* Ustawia oba skróty języków oraz separator w jednym wierszu. */
+  align-items: center; /* Wyrównuje skróty języków względem separatora. */
+  gap: 6px; /* Zachowuje czytelny odstęp między flagami. */
+  color: #9aa99c; /* Zapewnia kolor zapasowy dla zawartości przełącznika. */
+  font-size: 20px; /* Wyświetla flagi w czytelnym rozmiarze bez powiększania nagłówka. */
+  font-weight: 800; /* Zapewnia czytelność krótkich oznaczeń języka. */
+}
+.language-switch button {
+  display: grid; /* Ułatwia dokładne wycentrowanie flagi w przycisku. */
+  place-items: center; /* Ustawia flagę na środku obszaru kliknięcia. */
+  width: 34px; /* Zapewnia wygodny i równy obszar kliknięcia dla obu flag. */
+  height: 30px; /* Zapewnia wygodną wysokość przycisku bez zwiększania nagłówka. */
+  padding: 0; /* Usuwa dodatkowy odstęp wpływający na położenie flagi. */
+  border: 1px solid transparent; /* Rezerwuje miejsce na obramowanie aktywnego języka. */
+  border-radius: 7px; /* Nadaje zaznaczeniu języka łagodnie zaokrąglony kształt. */
+  background: transparent; /* Pozostawia tło nagłówka widoczne pod przyciskiem. */
+  color: inherit; /* Nadaje nieaktywnemu językowi wyciszony kolor kontenera. */
+  font: inherit; /* Zachowuje rozmiar i grubość pisma z przełącznika. */
+  cursor: pointer; /* Informuje kursorem, że język można zmienić. */
+  opacity: 0.55; /* Wycisza flagę języka, który nie jest obecnie wybrany. */
+}
+.language-switch button.active {
+  color: var(--green); /* Wyróżnia aktualnie wybraną wersję językową. */
+  background: #eaf1e3; /* Dodaje delikatne tło pod aktywną flagą. */
+  border-color: #cfddc9; /* Wyznacza czytelną granicę wybranego języka. */
+  opacity: 1; /* Pokazuje aktywną flagę z pełną intensywnością. */
 }
 .inline-link:hover,
 .project-link:hover {
@@ -94,7 +122,7 @@ textarea {
 .hero {
   min-height: 655px; /* Minimalna wysokość elementu niezależnie od ilości treści: 655px. */
   display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
-  grid-template-columns: 1.12fr 0.88fr; /* Liczba i szerokość kolumn siatki: 1.12fr 0.88fr. */
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); /* Nie pozwala dłuższemu nagłówkowi zmieniać szerokości kolumn i przesuwać zdjęcia. */
   gap: 40px; /* Odstęp między elementami układu flex lub grid: 40px. */
   align-items: center; /* Wyrównanie dzieci w poprzek głównego kierunku układu: center. */
   padding-top: 60px; /* Wewnętrzny odstęp nad treścią: 60px. */
@@ -136,12 +164,19 @@ h2 em {
   font-size: 17px; /* Rozmiar znaków tekstu: 17px. */
   max-width: 540px; /* Górna granica szerokości elementu: 540px. */
   margin: 0; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 0. */
+  min-height: 60px; /* Zachowuje położenie przycisków przy różnej długości opisu językowego. */
 }
 .actions {
   display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
   flex-wrap: wrap; /* Zezwolenie na przechodzenie elementów flex do kolejnego wiersza: wrap. */
   gap: 10px; /* Odstęp między elementami układu flex lub grid: 10px. */
   margin-top: 31px; /* Zewnętrzny odstęp nad elementem: 31px. */
+}
+.actions .btn:first-child {
+  width: 210px; /* Zachowuje szerokość pierwszego przycisku i mieści obie etykiety w jednym wierszu. */
+}
+.actions .btn:nth-child(2) {
+  width: 175px; /* Zachowuje szerokość drugiego przycisku i mieści obie etykiety w jednym wierszu. */
 }
 .btn {
   display: inline-flex; /* Tryb rozmieszczania elementu i jego dzieci: inline-flex. */
@@ -190,6 +225,8 @@ h2 em {
 }
 .hero-art {
   height: 450px; /* Wysokość elementu: 450px. */
+  width: 480px; /* Rezerwuje stałą szerokość grafiki, aby zmiana języka nie przesuwała zdjęcia. */
+  justify-self: end; /* Ustawia grafikę przy prawej krawędzi jej kolumny niezależnie od długości tekstu. */
   display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
   align-items: center; /* Wyrównanie dzieci w poprzek głównego kierunku układu: center. */
   justify-content: center; /* Rozmieszczenie dzieci wzdłuż głównego kierunku układu: center. */
@@ -310,6 +347,17 @@ h2 {
   color: var(--muted); /* Kolor tekstu i ikon dziedziczących bieżący kolor: var(--muted). */
   margin: 0 0 18px; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 0 0 18px. */
 }
+.prose {
+  min-height: 315px; /* Rezerwuje miejsce na dłuższą wersję tekstu bez zmiany wysokości sekcji. */
+}
+@media (min-width: 901px) {
+  #o-mnie {
+    min-height: 572px; /* Utrzymuje jednakową wysokość całej sekcji dla polskiej i angielskiej treści. */
+  }
+  #o-mnie h2 {
+    min-height: 176px; /* Rezerwuje miejsce na dłuższy angielski nagłówek bez skracania polskiej wersji. */
+  }
+}
 .inline-link {
   display: inline-flex; /* Tryb rozmieszczania elementu i jego dzieci: inline-flex. */
   align-items: center; /* Wyrównanie dzieci w poprzek głównego kierunku układu: center. */
@@ -336,6 +384,7 @@ h2 {
   line-height: 1.7; /* Wysokość wiersza tekstu wpływająca na odstęp między liniami: 1.7. */
   font-size: 14px; /* Rozmiar znaków tekstu: 14px. */
   margin: 0 0 5px; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 0 0 5px. */
+  min-height: 48px; /* Stabilizuje położenie opisu i elementów znajdujących się pod nagłówkiem. */
 }
 .timeline {
   border-top: 1px solid #d8e3d4; /* Obramowanie górnej krawędzi elementu: 1px solid #d8e3d4. */
@@ -346,6 +395,7 @@ h2 {
   gap: 25px; /* Odstęp między elementami układu flex lub grid: 25px. */
   border-bottom: 1px solid #d8e3d4; /* Obramowanie dolnej krawędzi elementu: 1px solid #d8e3d4. */
   padding: 29px 5px; /* Wewnętrzny odstęp między treścią a krawędzią elementu: 29px 5px. */
+  min-height: 118px; /* Utrzymuje jednakową wysokość etapów kariery dla obu języków. */
 }
 .dot {
   width: 11px; /* Szerokość elementu: 11px. */
@@ -513,6 +563,9 @@ h2 {
   flex-direction: column; /* Kierunek układania elementów flex: column. */
   flex: 1; /* Udział elementu w dostępnej przestrzeni układu flex: 1. */
 }
+.project-body > p {
+  min-height: 78px; /* Rezerwuje jednakową przestrzeń na polski i angielski opis projektu. */
+}
 .project-meta {
   display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
   justify-content: space-between; /* Rozmieszczenie dzieci wzdłuż głównego kierunku układu: space-between. */
@@ -605,6 +658,9 @@ h2 {
 .certs {
   align-items: center; /* Wyrównanie dzieci w poprzek głównego kierunku układu: center. */
 }
+.certs > div:first-child {
+  min-height: 190px; /* Utrzymuje nagłówek certyfikatów w tej samej pozycji przy krótszym opisie. */
+}
 .certs > div > p {
   max-width: 350px; /* Górna granica szerokości elementu: 350px. */
   color: var(--muted); /* Kolor tekstu i ikon dziedziczących bieżący kolor: var(--muted). */
@@ -675,6 +731,7 @@ h2 {
   color: #c7d6c7; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #c7d6c7. */
   margin: 18px auto 50px; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 18px auto 50px. */
   line-height: 1.7; /* Wysokość wiersza tekstu wpływająca na odstęp między liniami: 1.7. */
+  min-height: 28px; /* Zachowuje położenie siatki kontaktowej dla obu wersji opisu. */
 }
 .contact-grid {
   display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
@@ -811,6 +868,9 @@ footer a:last-child {
   .hero h1 {
     font-size: 50px; /* Rozmiar znaków tekstu: 50px. */
   }
+  .hero-art {
+    width: 400px; /* Dopasowuje stałą szerokość grafiki do węższego układu komputerowego. */
+  }
   .c1 {
     width: 365px; /* Szerokość elementu: 365px. */
     height: 365px; /* Wysokość elementu: 365px. */
@@ -859,11 +919,14 @@ footer a:last-child {
   .menu {
     display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
     place-items: center; /* Jednoczesne wyrównanie dzieci w obu osiach siatki: center. */
-    margin-left: auto; /* Zewnętrzny odstęp po lewej stronie elementu: auto. */
+    margin-left: 4px; /* Oddziela ikonę menu od przełącznika języka. */
     background: transparent; /* Kolor lub obraz wypełniający tło elementu: transparent. */
     border: 0; /* Obramowanie wokół wszystkich krawędzi elementu: 0. */
     color: var(--ink); /* Kolor tekstu i ikon dziedziczących bieżący kolor: var(--ink). */
     cursor: pointer; /* Wygląd kursora wskazujący możliwe działanie: pointer. */
+  }
+  .language-switch {
+    margin-left: auto; /* Przenosi przełącznik i przycisk menu na prawą stronę nagłówka. */
   }
   .hero {
     display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
@@ -886,6 +949,7 @@ footer a:last-child {
   }
   .hero-art {
     height: 375px; /* Wysokość elementu: 375px. */
+    width: 100%; /* Na telefonie pozwala grafice wypełnić dostępną szerokość bez wychodzenia poza ekran. */
   }
   .c1 {
     width: 350px; /* Szerokość elementu: 350px. */

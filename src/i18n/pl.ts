@@ -1,0 +1,136 @@
+export const pl = {
+  navigation: ['Start', 'O mnie', 'Doświadczenie', 'Projekty', 'Technologie', 'Kontakt'],
+  accessibility: {
+    chooseLanguage: 'Wybierz język',
+    polish: 'Wersja polska',
+    english: 'Wersja angielska',
+    openMenu: 'Otwórz menu',
+    closeMenu: 'Zamknij menu',
+    backToTop: 'Wróć na górę',
+    closePreview: 'Zamknij podgląd',
+    previousScreenshot: 'Poprzedni zrzut',
+    nextScreenshot: 'Następny zrzut',
+    screenshots: 'Zrzuty ekranu',
+  },
+  hero: {
+    eyebrow: 'Software engineer · Atlassian · Polska',
+    title: 'Buduję rozwiązania,',
+    titleAccent: 'które ułatwiają pracę.',
+    description:
+      'Cześć, jestem Michał. Tworzę aplikacje dla ekosystemu Atlassian, łącząc doświadczenie backendowe z Reactem, Forge i chmurą AWS.',
+    projectsButton: 'Poznaj moje projekty',
+    aboutButton: 'Więcej o mnie',
+    programmerYears: 'lat jako programista',
+    atlassianYears: 'lat w ekosystemie Atlassian',
+    specialization: 'Specjalizacja',
+    technologies: 'Technologie',
+    strip: 'Pracuję na styku produktu i technologii',
+  },
+  about: {
+    kicker: 'O mnie',
+    title: 'Inżynierskie podejście.',
+    titleAccent: 'Ludzkie rozwiązania.',
+    paragraphs: [
+      'Jestem absolwentem informatyki na Politechnice Łódzkiej z tytułem magistra. Zaczynałem od backendu w Javie — Spring, Hibernate i PostgreSQL. Z czasem poszerzyłem zakres pracy o frontend w React i Redux.',
+      'Programuję zawodowo od 10 lat. Od sześciu lat rozwijam aplikacje rozszerzające Jira, Jira Service Management i Confluence. W ostatnich dwóch latach koncentruję się na Atlassian Forge, React i Node.js. Tworzę oraz utrzymuję także infrastrukturę w AWS.',
+      'Po godzinach rozwijam własne aplikacje mobilne — to przestrzeń do eksperymentowania i sprawdzania nowych pomysłów.',
+    ],
+    linkedIn: 'Poznaj mnie na LinkedIn',
+  },
+  experience: {
+    kicker: 'Droga zawodowa',
+    title: 'Doświadczenie, które',
+    titleAccent: 'przekłada się na produkt.',
+    description: 'Od mocnego zaplecza backendowego do kompleksowego tworzenia aplikacji w chmurze.',
+    timeline: [
+      {
+        period: 'Ostatnie 2 lata',
+        title: 'Atlassian Forge & aplikacje cloud',
+        description:
+          'Rozwój rozszerzeń produktów Atlassian z użyciem Forge, React i Node.js. Praca przy integracjach oraz infrastrukturze AWS.',
+      },
+      {
+        period: 'Od 6 lat',
+        title: 'Ekosystem Atlassian',
+        description:
+          'Rozwój aplikacji dla Jira, Jira Service Management i Confluence, w tym integracja z usługami zewnętrznymi.',
+      },
+      {
+        period: 'Wcześniej',
+        title: 'Fundamenty full-stack',
+        description:
+          'Backend w Java, Spring i PostgreSQL, następnie rozwój interfejsów w React i Redux.',
+      },
+    ],
+  },
+  projects: {
+    kicker: 'Wybrane projekty',
+    title: 'Rozwiązania z życia.',
+    titleAccent: 'Pomysły po godzinach.',
+    description: 'Przykłady pracy przy produkcie dla klienta i własnych eksperymentów.',
+    commercial: 'Projekt komercyjny',
+    personal: 'Projekt własny',
+    marketplaceScreenshots: 'Zrzuty z Atlassian Marketplace',
+    iosScreenshots: 'Zrzuty z działającej aplikacji iOS',
+    docusignDescription:
+      'Dla Transition Technologies PSC rozwijam aplikację, która łączy obieg dokumentów w Jira i Jira Service Management z podpisem elektronicznym DocuSign.',
+    marketplaceLink: 'Zobacz w Atlassian Marketplace',
+    kiciaDescription:
+      'Autorska aplikacja w React Native do prowadzenia kolekcji książek z serii Kicia Kocia. Pozwala wyszukiwać tytuły, oznaczać posiadane egzemplarze, tworzyć listę życzeń i losować książkę do wspólnego czytania.',
+    alt: {
+      docusignAction: 'Akcja Sign with DocuSign w zgłoszeniu Jira',
+      docusignSettings: 'Ustawienia podpisu w aplikacji DocuSign for Jira',
+      wishList: 'Lista życzeń w aplikacji Kicia Kocia Books',
+      drawing: 'Losowanie książki do czytania w aplikacji',
+      library: 'Biblioteczka Kicia Kocia Books',
+    },
+    gallery: {
+      docusign: ['Akcja w Jira', 'Opcje podpisu', 'Historia'],
+      kicia: ['Biblioteczka', 'Szczegóły', 'Widok półki', 'Lista życzeń', 'Czytamy'],
+    },
+  },
+  technologies: {
+    kicker: 'Mój warsztat',
+    title: 'Technologie dobrane',
+    titleAccent: 'do zadania.',
+    description:
+      'Pracuję w całym przekroju aplikacji — od interfejsu, przez logikę, po infrastrukturę.',
+    groups: [
+      {
+        name: 'Atlassian & Forge',
+        description: 'Aplikacje i rozszerzenia dla ekosystemu Atlassian.',
+      },
+      { name: 'Frontend', description: 'Interfejsy webowe i aplikacje mobilne.' },
+      { name: 'Backend', description: 'Logika aplikacji, integracje i API.' },
+      { name: 'Dane & chmura', description: 'Bazy danych i środowiska aplikacyjne.' },
+    ],
+  },
+  certificates: {
+    kicker: 'Potwierdzone umiejętności',
+    title: 'Rozwijam się',
+    titleAccent: 'nieustannie.',
+    description: 'Moje certyfikaty można zweryfikować bezpośrednio w serwisie Credly.',
+  },
+  contact: {
+    kicker: 'Kontakt',
+    title: 'Zostańmy',
+    titleAccent: 'w kontakcie.',
+    description: 'Napisz kilka słów o tym, czego potrzebujesz. Chętnie sprawdzę, jak mogę pomóc.',
+    country: 'Polska',
+    fullName: 'Imię i nazwisko',
+    fullNamePlaceholder: 'Jak się nazywasz?',
+    email: 'Adres e-mail',
+    emailPlaceholder: 'twoj@email.pl',
+    subject: 'Temat',
+    subjectPlaceholder: 'O czym chcesz porozmawiać?',
+    message: 'Wiadomość',
+    messagePlaceholder: 'Napisz swoją wiadomość...',
+    sending: 'Wysyłanie…',
+    send: 'Wyślij wiadomość',
+    sent: 'Wiadomość została przyjęta. Dziękuję!',
+    error:
+      'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na podany adres.',
+    idle: 'Wiadomość zostanie wysłana bez opuszczania strony.',
+    provider: 'Wysyłkę obsługuje FormSubmit.',
+  },
+};

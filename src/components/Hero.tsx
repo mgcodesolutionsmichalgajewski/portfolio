@@ -1,35 +1,34 @@
-import { ArrowUpRight, ArrowDown, Code2, Cloud } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Cloud, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { publicAsset } from '../publicAsset';
 
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <>
       <section className="hero wrap" id="start">
         <div>
-          <div className="pill">● &nbsp; Software engineer · Atlassian · Polska</div>
+          <div className="pill">● &nbsp; {t('hero.eyebrow')}</div>
           <h1>
-            Buduję rozwiązania,
+            {t('hero.title')}
             <br />
-            <em>które ułatwiają pracę.</em>
+            <em>{t('hero.titleAccent')}</em>
           </h1>
-          <p>
-            Cześć, jestem Michał. Tworzę aplikacje dla ekosystemu Atlassian, łącząc doświadczenie
-            backendowe z Reactem, Forge i chmurą AWS.
-          </p>
+          <p>{t('hero.description')}</p>
           <div className="actions">
             <a className="btn primary" href="#projekty">
-              Poznaj moje projekty <ArrowUpRight size={17} />
+              {t('hero.projectsButton')} <ArrowUpRight size={17} />
             </a>
             <a className="btn outline" href="#o-mnie">
-              Więcej o mnie <ArrowDown size={17} />
+              {t('hero.aboutButton')} <ArrowDown size={17} />
             </a>
           </div>
           <div className="facts">
             <span>
-              <b>10</b> lat jako programista
+              <b>10</b> {t('hero.programmerYears')}
             </span>
             <span>
-              <b>6</b> lat w ekosystemie Atlassian
+              <b>6</b> {t('hero.atlassianYears')}
             </span>
           </div>
         </div>
@@ -42,14 +41,14 @@ export default function Hero() {
           <div className="floating float-a">
             <Code2 />
             <span>
-              <small>Specjalizacja</small>
+              <small>{t('hero.specialization')}</small>
               <b>Atlassian Forge</b>
             </span>
           </div>
           <div className="floating float-b">
             <Cloud />
             <span>
-              <small>Technologie</small>
+              <small>{t('hero.technologies')}</small>
               <b>React · Java · Node · AWS</b>
             </span>
           </div>
@@ -57,7 +56,7 @@ export default function Hero() {
       </section>
       <div className="strip">
         <div className="wrap strip-inner">
-          <span>Pracuję na styku produktu i technologii</span>
+          <span>{t('hero.strip')}</span>
           <b>Jira</b>
           <b>JSM</b>
           <b>Confluence</b>
