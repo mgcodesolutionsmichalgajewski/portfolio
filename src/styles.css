@@ -663,6 +663,11 @@ h2 {
   border-top: 1px solid #47654e; /* Obramowanie górnej krawędzi elementu: 1px solid #47654e. */
   padding-top: 42px; /* Wewnętrzny odstęp nad treścią: 42px. */
 }
+.contact-info {
+  width: min(100%, 350px); /* Ogranicza szerokość danych kontaktowych, aby cały blok można było czytelnie wyśrodkować. */
+  align-self: center; /* Ustawia blok na środku wysokości dostępnej obok formularza. */
+  justify-self: center; /* Ustawia blok na środku szerokości jego kolumny, a na telefonie na środku strony. */
+}
 .contact-info h3 {
   font: /* Zestaw cech pisma: grubość, rozmiar, interlinia i krój; wartość jest kontynuowana w kolejnych liniach. */
     800 23px/1.35 Manrope,
