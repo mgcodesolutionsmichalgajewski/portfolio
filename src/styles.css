@@ -1126,31 +1126,21 @@ footer a:last-child {
 .cat-art {
   isolation: isolate; /* Osobna warstwa nakładania dla elementu i jego dzieci: isolate. */
 }
-.app-shot {
-  position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
-  width: 108px; /* Szerokość elementu: 108px. */
-  height: 234px; /* Wysokość elementu: 234px. */
-  object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
-  object-position: top; /* Położenie obrazu wewnątrz jego ramki: top. */
-  border: 4px solid white; /* Obramowanie wokół wszystkich krawędzi elementu: 4px solid white. */
-  border-radius: 17px; /* Zaokrąglenie narożników elementu: 17px. */
-  box-shadow: 0 15px 30px #765a2d48; /* Cień nadający elementowi głębię: 0 15px 30px #765a2d48. */
+.project-preview-button {
+  display: block; /* Pozwala przyciskowi wypełnić cały obszar grafiki projektu. */
+  width: 100%; /* Dopasowuje szerokość przycisku do szerokości karty projektu. */
+  height: 100%; /* Dopasowuje wysokość przycisku do wysokości obszaru miniatury. */
+  padding: 0; /* Usuwa domyślny odstęp przycisku wokół obrazu. */
+  border: 0; /* Usuwa domyślne obramowanie przycisku. */
+  background: transparent; /* Zachowuje gradientowe tło sekcji widoczne pod przezroczystą miniaturą. */
+  cursor: zoom-in; /* Wskazuje, że kliknięcie miniatury otwiera powiększoną galerię. */
 }
-.shot-front {
-  z-index: 3; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 3. */
-  transform: translateY(
-    15px
-  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(15px). */
-  width: 120px; /* Szerokość elementu: 120px. */
-  height: 260px; /* Wysokość elementu: 260px. */
-}
-.shot-back-left {
-  z-index: 1; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 1. */
-  transform: translate(-92px, 31px) rotate(-12deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-92px, 31px) rotate(-12deg). */
-}
-.shot-back-right {
-  z-index: 2; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 2. */
-  transform: translate(92px, 31px) rotate(12deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(92px, 31px) rotate(12deg). */
+.project-preview {
+  display: block; /* Usuwa odstęp charakterystyczny dla obrazu osadzonego w linii tekstu. */
+  width: 100%; /* Skaluje gotową miniaturę do szerokości obszaru projektu. */
+  height: 100%; /* Skaluje gotową miniaturę do wysokości obszaru projektu. */
+  object-fit: contain; /* Pokazuje całą przygotowaną kompozycję bez dodatkowego kadrowania. */
+  object-position: center; /* Ustawia gotową kompozycję na środku obszaru grafiki. */
 }
 .cat-art .art-note {
   z-index: 4; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 4. */
@@ -1180,24 +1170,6 @@ footer a:last-child {
 .doc-art {
   isolation: isolate; /* Osobna warstwa nakładania dla elementu i jego dzieci: isolate. */
 }
-.market-shot {
-  position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
-  width: 72%; /* Szerokość elementu: 72%. */
-  height: 170px; /* Wysokość elementu: 170px. */
-  object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
-  object-position: center top; /* Położenie obrazu wewnątrz jego ramki: center top. */
-  border: 5px solid #fff; /* Obramowanie wokół wszystkich krawędzi elementu: 5px solid #fff. */
-  border-radius: 9px; /* Zaokrąglenie narożników elementu: 9px. */
-  box-shadow: 0 16px 35px #28443238; /* Cień nadający elementowi głębię: 0 16px 35px #28443238. */
-}
-.market-left {
-  transform: translate(-56px, 8px) rotate(-6deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-56px, 8px) rotate(-6deg). */
-  z-index: 1; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 1. */
-}
-.market-right {
-  transform: translate(62px, 18px) rotate(5deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(62px, 18px) rotate(5deg). */
-  z-index: 2; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 2. */
-}
 .doc-art .art-note {
   z-index: 3; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 3. */
   background: #f8fff4e8; /* Kolor lub obraz wypełniający tło elementu: #f8fff4e8. */
@@ -1226,18 +1198,6 @@ footer a:last-child {
   margin-top: 0; /* Zewnętrzny odstęp nad elementem: 0. */
   padding-top: 18px; /* Wewnętrzny odstęp nad treścią: 18px. */
 }
-@media (max-width: 450px) {
-  .market-shot {
-    height: 142px; /* Wysokość elementu: 142px. */
-  }
-  .market-left {
-    transform: translate(-38px, 8px) rotate(-6deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-38px, 8px) rotate(-6deg). */
-  }
-  .market-right {
-    transform: translate(43px, 15px) rotate(5deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(43px, 15px) rotate(5deg). */
-  }
-}
-
 .nav-cta {
   display: none; /* Tryb rozmieszczania elementu i jego dzieci: none. */
 }

@@ -30,16 +30,17 @@ export default function Projects({
       <div className="projects">
         <article className="project project-commercial" data-reveal>
           <div className="project-art doc-art">
-            <img
-              className="market-shot market-left"
-              src={publicAsset('docusign/01-podpis.png')}
-              alt={t('projects.alt.docusignAction')}
-            />
-            <img
-              className="market-shot market-right"
-              src={publicAsset('docusign/02-lokalizacja.png')}
-              alt={t('projects.alt.docusignSettings')}
-            />
+            <button
+              className="project-preview-button"
+              type="button"
+              onClick={() => onOpenGallery('docusign', 0)}
+            >
+              <img
+                className="project-preview"
+                src={publicAsset('project-previews/docusign.png')}
+                alt={t('projects.alt.docusignAction')}
+              />
+            </button>
             <div className="art-note">{t('projects.marketplaceScreenshots')}</div>
           </div>
           <div className="project-body">
@@ -78,21 +79,17 @@ export default function Projects({
         </article>
         <article className="project project-personal" data-reveal>
           <div className="project-art cat-art">
-            <img
-              className="app-shot shot-back-left"
-              src={publicAsset('kicia-kocia/04-lista-zyczen.png')}
-              alt={t('projects.alt.wishList')}
-            />
-            <img
-              className="app-shot shot-back-right"
-              src={publicAsset('kicia-kocia/05-co-czytamy.png')}
-              alt={t('projects.alt.drawing')}
-            />
-            <img
-              className="app-shot shot-front"
-              src={publicAsset('kicia-kocia/01-start.png')}
-              alt={t('projects.alt.library')}
-            />
+            <button
+              className="project-preview-button"
+              type="button"
+              onClick={() => onOpenGallery('kicia', 0)}
+            >
+              <img
+                className="project-preview"
+                src={publicAsset('project-previews/kicia-kocia.png')}
+                alt={t('projects.alt.library')}
+              />
+            </button>
             <div className="art-note">{t('projects.iosScreenshots')}</div>
           </div>
           <div className="project-body">
