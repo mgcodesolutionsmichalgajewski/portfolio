@@ -9,7 +9,7 @@ export default function Projects({
 }) {
   return (
     <section className="section wrap" id="projekty">
-      <div className="heading">
+      <div className="heading" data-reveal>
         <div>
           <span className="kicker">03 / Wybrane projekty</span>
           <h2>
@@ -21,7 +21,7 @@ export default function Projects({
         <p>Przykłady pracy przy produkcie dla klienta i własnych eksperymentów.</p>
       </div>
       <div className="projects">
-        <article className="project">
+        <article className="project project-commercial" data-reveal>
           <div className="project-art doc-art">
             <img
               className="market-shot market-left"
@@ -72,7 +72,7 @@ export default function Projects({
             </a>
           </div>
         </article>
-        <article className="project">
+        <article className="project project-personal" data-reveal>
           <div className="project-art cat-art">
             <img
               className="app-shot shot-back-left"

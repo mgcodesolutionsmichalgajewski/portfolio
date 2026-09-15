@@ -1,9 +1,10 @@
-import { ArrowUpRight, Award } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { publicAsset } from '../publicAsset';
 
 export default function Certificates() {
   return (
     <section className="section wrap two certs" id="certyfikaty">
-      <div>
+      <div data-reveal>
         <span className="kicker">05 / Potwierdzone umiejętności</span>
         <h2>
           Rozwijam się
@@ -17,20 +18,25 @@ export default function Certificates() {
           [
             '0c846bc6-178c-4a78-aa16-e5dffd25902b',
             'HashiCorp Certified: Terraform Associate (002)',
+            'icons/terraform.svg',
+            'HashiCorp Terraform',
           ],
           [
             '581a21a6-c968-454d-a053-942a6204b39d',
             'Oracle Certified Associate, Java SE 8 Programmer',
+            'icons/java.svg',
+            'Java',
           ],
-        ].map(([id, name], i) => (
+        ].map(([id, name, logo, logoAlt], i) => (
           <a
             key={id}
             href={`https://www.credly.com/badges/${id}?source=linked_in_profile`}
             target="_blank"
             rel="noreferrer"
+            data-reveal
           >
             <span className="award">
-              <Award />
+              <img src={publicAsset(logo)} alt={logoAlt} />
             </span>
             <span>
               <small>Credly · certyfikat 0{i + 1}</small>

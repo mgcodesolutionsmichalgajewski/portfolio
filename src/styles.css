@@ -20,7 +20,8 @@ body {
   margin: 0; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 0. */
   background: var(--paper); /* Kolor lub obraz wypełniający tło elementu: var(--paper). */
   color: var(--ink); /* Kolor tekstu i ikon dziedziczących bieżący kolor: var(--ink). */
-  font-family: 'DM Sans', Arial, sans-serif; /* Krój pisma używany do wyświetlania tekstu: 'DM Sans', Arial, sans-serif. */
+  font-family:
+    'DM Sans', Arial, sans-serif; /* Krój pisma używany do wyświetlania tekstu: 'DM Sans', Arial, sans-serif. */
 }
 a {
   text-decoration: none; /* Ozdobienie tekstu, na przykład podkreślenie odnośnika: none. */
@@ -158,7 +159,9 @@ h2 em {
 }
 .btn:hover,
 .nav-cta:hover {
-  transform: translateY(-2px); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(-2px). */
+  transform: translateY(
+    -2px
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(-2px). */
 }
 .primary {
   background: var(--green); /* Kolor lub obraz wypełniający tło elementu: var(--green). */
@@ -392,10 +395,18 @@ h2 {
   overflow: hidden; /* Sposób traktowania treści wychodzącej poza granice elementu: hidden. */
 }
 .doc-art {
-  background: linear-gradient(145deg, #dce9d6, #eff4e8); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(145deg, #dce9d6, #eff4e8). */
+  background: linear-gradient(
+    145deg,
+    #dce9d6,
+    #eff4e8
+  ); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(145deg, #dce9d6, #eff4e8). */
 }
 .cat-art {
-  background: linear-gradient(145deg, #f5e5cc, #f9f0df); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(145deg, #f5e5cc, #f9f0df). */
+  background: linear-gradient(
+    145deg,
+    #f5e5cc,
+    #f9f0df
+  ); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(145deg, #f5e5cc, #f9f0df). */
 }
 .art-note {
   position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
@@ -413,7 +424,9 @@ h2 {
   background: white; /* Kolor lub obraz wypełniający tło elementu: white. */
   border-radius: 10px; /* Zaokrąglenie narożników elementu: 10px. */
   box-shadow: 0 18px 35px #43634430; /* Cień nadający elementowi głębię: 0 18px 35px #43634430. */
-  transform: rotate(-3deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: rotate(-3deg). */
+  transform: rotate(
+    -3deg
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: rotate(-3deg). */
   padding: 0 20px 20px; /* Wewnętrzny odstęp między treścią a krawędzią elementu: 0 20px 20px. */
 }
 .doc-top {
@@ -459,7 +472,9 @@ h2 {
   background: #254335; /* Kolor lub obraz wypełniający tło elementu: #254335. */
   border: 6px solid #254335; /* Obramowanie wokół wszystkich krawędzi elementu: 6px solid #254335. */
   border-radius: 25px; /* Zaokrąglenie narożników elementu: 25px. */
-  transform: rotate(7deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: rotate(7deg). */
+  transform: rotate(
+    7deg
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: rotate(7deg). */
   box-shadow: 0 18px 30px #825e2a43; /* Cień nadający elementowi głębię: 0 18px 30px #825e2a43. */
 }
 .phone-screen {
@@ -664,7 +679,10 @@ h2 {
   padding-top: 42px; /* Wewnętrzny odstęp nad treścią: 42px. */
 }
 .contact-info {
-  width: min(100%, 350px); /* Ogranicza szerokość danych kontaktowych, aby cały blok można było czytelnie wyśrodkować. */
+  width: min(
+    100%,
+    350px
+  ); /* Ogranicza szerokość danych kontaktowych, aby cały blok można było czytelnie wyśrodkować. */
   align-self: center; /* Ustawia blok na środku wysokości dostępnej obok formularza. */
   justify-self: center; /* Ustawia blok na środku szerokości jego kolumny, a na telefonie na środku strony. */
 }
@@ -1006,7 +1024,9 @@ footer a:last-child {
 }
 .shot-front {
   z-index: 3; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 3. */
-  transform: translateY(15px); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(15px). */
+  transform: translateY(
+    15px
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(15px). */
   width: 120px; /* Szerokość elementu: 120px. */
   height: 260px; /* Wysokość elementu: 260px. */
 }
@@ -1256,9 +1276,186 @@ footer a:last-child {
   }
 }
 
+/* Aktywna pozycja nawigacji */
+.links a {
+  position: relative; /* Tworzy punkt odniesienia dla podkreślenia aktywnej sekcji. */
+  padding-block: 8px; /* Powiększa pionowy obszar kliknięcia odnośnika. */
+}
+.links a::after {
+  content: ''; /* Tworzy dekoracyjne podkreślenie bez dodatkowego elementu HTML. */
+  position: absolute; /* Umieszcza podkreślenie niezależnie od tekstu odnośnika. */
+  right: 0; /* Wyrównuje koniec podkreślenia do prawej krawędzi odnośnika. */
+  bottom: 1px; /* Umieszcza podkreślenie tuż pod tekstem. */
+  left: 0; /* Rozciąga podkreślenie od lewej krawędzi odnośnika. */
+  height: 2px; /* Nadaje podkreśleniu subtelną grubość. */
+  background: #8ab262; /* Używa zielonego akcentu zgodnego z identyfikacją strony. */
+  border-radius: 2px; /* Zaokrągla końce podkreślenia. */
+  transform: scaleX(0); /* Ukrywa podkreślenie, dopóki sekcja nie jest aktywna. */
+  transform-origin: right; /* Powoduje zwijanie podkreślenia w stronę prawej krawędzi. */
+  transition: transform 0.22s ease; /* Płynnie pokazuje i ukrywa aktywny stan. */
+}
+.links a:hover::after,
+.links a.active::after {
+  transform: scaleX(1); /* Pokazuje pełną linię przy aktywnej sekcji lub najechaniu. */
+  transform-origin: left; /* Rozwija linię od lewej strony. */
+}
+
+/* Animacje wejścia treści */
+.reveal {
+  opacity: 0; /* Ukrywa element przed jego pojawieniem się w widoku. */
+  transform: translateY(24px); /* Umieszcza element nieco niżej przed animacją. */
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1); /* Łagodnie odsłania i przesuwa element do docelowej pozycji. */
+}
+.reveal.is-visible {
+  opacity: 1; /* Pokazuje element po wejściu do widocznego obszaru. */
+  transform: translateY(0); /* Przenosi element do jego naturalnego położenia. */
+}
+.projects .project:nth-child(2),
+.cert-list a:nth-child(2),
+.technology-group:nth-child(even) {
+  transition-delay: 0.1s; /* Lekko opóźnia co drugi element, tworząc naturalną sekwencję. */
+}
+
+/* Zróżnicowane karty projektów */
+.project {
+  box-shadow: 0 18px 50px #1b35290b; /* Delikatnie oddziela kartę od tła sekcji. */
+}
+.project-commercial {
+  border-top: 4px solid #6f9d72; /* Oznacza projekt komercyjny zielonym akcentem. */
+}
+.project-personal {
+  border-top: 4px solid #d7a46f; /* Oznacza projekt własny cieplejszym akcentem. */
+}
+.project-commercial .project-body {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #fbfdf9
+  ); /* Dodaje karcie komercyjnej chłodne, jasne wykończenie. */
+}
+.project-personal .project-body {
+  background: linear-gradient(
+    180deg,
+    #fffefa,
+    #fdf9f2
+  ); /* Dodaje projektowi własnemu delikatnie cieplejsze wykończenie. */
+}
+
+/* Graficzne oznaczenia certyfikatów */
+.award {
+  padding: 10px; /* Zapewnia logo bezpieczny odstęp od krawędzi kafelka. */
+}
+.award img {
+  width: 100%; /* Dopasowuje logo do szerokości pola certyfikatu. */
+  height: 100%; /* Dopasowuje logo do wysokości pola certyfikatu. */
+  object-fit: contain; /* Zachowuje pełne proporcje i widoczność logo. */
+}
+.cert-list a {
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease; /* Płynnie podkreśla interaktywność certyfikatu. */
+}
+.cert-list a:hover {
+  transform: translateX(5px); /* Przesuwa certyfikat w kierunku ikony otwarcia. */
+  border-color: #bdd0b1; /* Wzmacnia zieloną ramkę podczas wskazania. */
+  box-shadow: 0 12px 30px #1b352910; /* Dodaje niewielką głębię aktywnej karcie. */
+}
+
+/* Subtelne tła sekcji */
+#o-mnie,
+#projekty,
+#certyfikaty {
+  background-image: radial-gradient(
+    circle at 92% 12%,
+    #dcebcf55 0,
+    transparent 27%
+  ); /* Dodaje jasną zieloną poświatę w pustych obszarach sekcji. */
+}
+#doswiadczenie,
+#technologie {
+  background-image: radial-gradient(
+    circle at 8% 88%,
+    #cddfbe55 0,
+    transparent 26%
+  ); /* Równoważy układ poświatą po przeciwnej stronie kolejnych sekcji. */
+}
+
+/* Mobilny powrót na górę */
+.back-to-top {
+  display: none; /* Ukrywa dodatkowy przycisk na szerokich ekranach, gdzie działa pełne menu. */
+}
+
+@media (max-width: 900px) {
+  .links a.active {
+    color: #76a04e; /* Wyróżnia aktywną pozycję w rozwijanym menu mobilnym. */
+  }
+  .back-to-top {
+    position: fixed; /* Utrzymuje przycisk w stałym miejscu podczas przewijania. */
+    right: 18px; /* Odsuwa przycisk od prawej krawędzi telefonu. */
+    bottom: 18px; /* Odsuwa przycisk od dolnej krawędzi telefonu. */
+    z-index: 20; /* Umieszcza przycisk nad zawartością strony. */
+    display: grid; /* Umożliwia dokładne wycentrowanie ikony. */
+    place-items: center; /* Centruje strzałkę w obu osiach przycisku. */
+    width: 46px; /* Zapewnia wygodny obszar dotykowy. */
+    height: 46px; /* Zapewnia wygodny obszar dotykowy. */
+    border: 1px solid #ffffff55; /* Oddziela przycisk od ciemnych i jasnych fragmentów strony. */
+    border-radius: 50%; /* Nadaje przyciskowi okrągły kształt. */
+    background: #244b35eb; /* Zapewnia czytelne, spójne z marką tło. */
+    color: #fff; /* Zapewnia wysoki kontrast strzałki. */
+    box-shadow: 0 10px 28px #1026153d; /* Oddziela przycisk od treści pod nim. */
+    backdrop-filter: blur(8px); /* Zmiękcza treść widoczną pod półprzezroczystym przyciskiem. */
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding-top: 64px; /* Skraca pustą przestrzeń nad sekcjami na telefonie. */
+    padding-bottom: 64px; /* Skraca pustą przestrzeń pod sekcjami na telefonie. */
+  }
+  .heading {
+    margin-bottom: 32px; /* Zmniejsza odstęp między nagłówkiem a zawartością sekcji. */
+  }
+  .contact-heading p {
+    margin-bottom: 34px; /* Przybliża dane kontaktowe do nagłówka sekcji. */
+  }
+  .contact-info > a,
+  .contact-info > div {
+    overflow-wrap: anywhere; /* Pozwala długiemu adresowi e-mail bezpiecznie zawinąć się na małym ekranie. */
+  }
+  .shot-links button,
+  .doc-links button {
+    min-height: 44px; /* Zapewnia wygodny obszar dotykowy przycisków galerii. */
+    padding: 10px 12px; /* Powiększa przyciski galerii bez zwiększania tekstu. */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* Wyłącza płynne przewijanie zgodnie z preferencją systemową użytkownika. */
+  }
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1; /* Pozostawia całą treść widoczną bez animacji. */
+    transform: none; /* Usuwa ruch elementów dla osób ograniczających animacje. */
+    transition: none; /* Wyłącza przejścia wejścia. */
+  }
+  .project,
+  .cert-list a,
+  .technology-tile,
+  .links a::after {
+    transition: none; /* Wyłącza pozostałe animacje interfejsu. */
+  }
+}
+
 .technology-groups {
   display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Liczba i szerokość kolumn siatki: repeat(2, minmax(0, 1fr)). */
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  ); /* Liczba i szerokość kolumn siatki: repeat(2, minmax(0, 1fr)). */
   gap: 18px; /* Odstęp między elementami układu flex lub grid: 18px. */
   margin-top: 42px; /* Zewnętrzny odstęp nad elementem: 42px. */
 }
@@ -1292,7 +1489,10 @@ footer a:last-child {
 }
 .technology-grid {
   display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Liczba i szerokość kolumn siatki: repeat(4, minmax(0, 1fr)). */
+  grid-template-columns: repeat(
+    4,
+    minmax(0, 1fr)
+  ); /* Liczba i szerokość kolumn siatki: repeat(4, minmax(0, 1fr)). */
   gap: 10px; /* Odstęp między elementami układu flex lub grid: 10px. */
 }
 .technology-tile {
@@ -1335,7 +1535,9 @@ footer a:last-child {
 }
 .technology-tile:hover {
   border-color: #c8d8bd; /* Kolor istniejącego obramowania elementu: #c8d8bd. */
-  transform: translateY(-2px); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(-2px). */
+  transform: translateY(
+    -2px
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(-2px). */
   transition: /* Płynność przejścia między stanami stylu; wartość jest kontynuowana w kolejnych liniach. */
     transform 0.2s,
     border-color 0.2s;
@@ -1369,7 +1571,10 @@ footer a:last-child {
     margin-top: 5px; /* Zewnętrzny odstęp nad elementem: 5px. */
   }
   .technology-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Liczba i szerokość kolumn siatki: repeat(2, minmax(0, 1fr)). */
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    ); /* Liczba i szerokość kolumn siatki: repeat(2, minmax(0, 1fr)). */
   }
   .technology-tile {
     min-height: 100px; /* Minimalna wysokość elementu niezależnie od ilości treści: 100px. */
@@ -1393,7 +1598,11 @@ footer a:last-child {
   position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
   inset: 0 0 auto; /* Jednoczesne odsunięcie pozycjonowanego elementu od krawędzi: 0 0 auto. */
   height: 4px; /* Wysokość elementu: 4px. */
-  background: linear-gradient(90deg, #89b777, #d1e68e); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(90deg, #89b777, #d1e68e). */
+  background: linear-gradient(
+    90deg,
+    #89b777,
+    #d1e68e
+  ); /* Kolor lub obraz wypełniający tło elementu: linear-gradient(90deg, #89b777, #d1e68e). */
 }
 .technology-group-heading {
   align-items: flex-start; /* Wyrównanie dzieci w poprzek głównego kierunku układu: flex-start. */
@@ -1407,7 +1616,10 @@ footer a:last-child {
   gap: 9px; /* Odstęp między elementami układu flex lub grid: 9px. */
 }
 .technology-group:last-child .technology-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Liczba i szerokość kolumn siatki: repeat(3, minmax(0, 1fr)). */
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  ); /* Liczba i szerokość kolumn siatki: repeat(3, minmax(0, 1fr)). */
 }
 .technology-tile {
   min-height: 108px; /* Minimalna wysokość elementu niezależnie od ilości treści: 108px. */
@@ -1441,7 +1653,10 @@ footer a:last-child {
     padding: 10px 4px; /* Wewnętrzny odstęp między treścią a krawędzią elementu: 10px 4px. */
   }
   .technology-group:last-child .technology-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Liczba i szerokość kolumn siatki: repeat(3, minmax(0, 1fr)). */
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    ); /* Liczba i szerokość kolumn siatki: repeat(3, minmax(0, 1fr)). */
   }
   .technology-group:last-child .technology-tile {
     font-size: 10px; /* Rozmiar znaków tekstu: 10px. */

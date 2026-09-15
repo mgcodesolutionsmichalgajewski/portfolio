@@ -42,17 +42,17 @@ export default function Contact() {
   return (
     <section className="section contact" id="kontakt">
       <div className="wrap">
-        <div className="contact-heading">
+        <div className="contact-heading" data-reveal>
           <span className="kicker">06 / Kontakt</span>
           <h2>
-            Masz projekt lub pomysł?
+            Zostańmy
             <br />
-            <em>Porozmawiajmy.</em>
+            <em>w kontakcie.</em>
           </h2>
           <p>Napisz kilka słów o tym, czego potrzebujesz. Chętnie sprawdzę, jak mogę pomóc.</p>
         </div>
         <div className="contact-grid">
-          <div className="contact-info">
+          <div className="contact-info" data-reveal>
             <h3>
               MG Code Solutions
               <br />
@@ -81,7 +81,7 @@ export default function Contact() {
               LinkedIn <ArrowUpRight size={17} />
             </a>
           </div>
-          <form onSubmit={send}>
+          <form onSubmit={send} data-reveal>
             <input
               className="honeypot"
               name="_honey"
