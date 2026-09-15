@@ -1127,7 +1127,7 @@ footer a:last-child {
   isolation: isolate; /* Osobna warstwa nakładania dla elementu i jego dzieci: isolate. */
 }
 .app-shot {
-  position: relative; /* Pozwala przesuwać miniaturę bez tworzenia rozmywanej warstwy transformacji. */
+  position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
   width: 108px; /* Szerokość elementu: 108px. */
   height: 234px; /* Wysokość elementu: 234px. */
   object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
@@ -1137,23 +1137,20 @@ footer a:last-child {
   box-shadow: 0 15px 30px #765a2d48; /* Cień nadający elementowi głębię: 0 15px 30px #765a2d48. */
 }
 .shot-front {
-  order: 2; /* Umieszcza główny ekran pomiędzy dwoma ekranami znajdującymi się w tle. */
   z-index: 3; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 3. */
-  top: 15px; /* Obniża główny ekran bez używania transformacji rozmywającej obraz w Chrome. */
+  transform: translateY(
+    15px
+  ); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translateY(15px). */
   width: 120px; /* Szerokość elementu: 120px. */
   height: 260px; /* Wysokość elementu: 260px. */
 }
 .shot-back-left {
-  order: 1; /* Ustawia ekran listy życzeń po lewej stronie głównego ekranu. */
   z-index: 1; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 1. */
-  top: 31px; /* Obniża boczny ekran bez obracania i ponownego rasteryzowania obrazu. */
-  margin-right: -18px; /* Nakłada lewy ekran na główny ekran, zachowując układ kolażu. */
+  transform: translate(-92px, 31px) rotate(-12deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-92px, 31px) rotate(-12deg). */
 }
 .shot-back-right {
-  order: 3; /* Ustawia ekran czytania po prawej stronie głównego ekranu. */
   z-index: 2; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 2. */
-  top: 31px; /* Obniża boczny ekran bez obracania i ponownego rasteryzowania obrazu. */
-  margin-left: -18px; /* Nakłada prawy ekran na główny ekran, zachowując układ kolażu. */
+  transform: translate(92px, 31px) rotate(12deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(92px, 31px) rotate(12deg). */
 }
 .cat-art .art-note {
   z-index: 4; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 4. */
@@ -1184,8 +1181,8 @@ footer a:last-child {
   isolation: isolate; /* Osobna warstwa nakładania dla elementu i jego dzieci: isolate. */
 }
 .market-shot {
-  position: relative; /* Pozwala układać zrzuty bez transformacji rozmywających je w Chrome na Windowsie. */
-  width: 62%; /* Zapewnia czytelny rozmiar obu zachodzących na siebie zrzutów. */
+  position: absolute; /* Sposób pozycjonowania elementu względem układu strony lub okna: absolute. */
+  width: 72%; /* Szerokość elementu: 72%. */
   height: 170px; /* Wysokość elementu: 170px. */
   object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
   object-position: center top; /* Położenie obrazu wewnątrz jego ramki: center top. */
@@ -1194,14 +1191,11 @@ footer a:last-child {
   box-shadow: 0 16px 35px #28443238; /* Cień nadający elementowi głębię: 0 16px 35px #28443238. */
 }
 .market-left {
-  left: 8%; /* Przesuwa pierwszy zrzut w lewo bez używania transformacji CSS. */
-  top: 8px; /* Delikatnie obniża pierwszy zrzut w kompozycji. */
+  transform: translate(-56px, 8px) rotate(-6deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-56px, 8px) rotate(-6deg). */
   z-index: 1; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 1. */
 }
 .market-right {
-  right: 8%; /* Przesuwa drugi zrzut w prawo bez używania transformacji CSS. */
-  top: 18px; /* Ustawia drugi zrzut nieco niżej od pierwszego. */
-  margin-left: -24%; /* Nakłada zrzuty na siebie bez skalowania ich przez silnik renderujący. */
+  transform: translate(62px, 18px) rotate(5deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(62px, 18px) rotate(5deg). */
   z-index: 2; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 2. */
 }
 .doc-art .art-note {
@@ -1237,10 +1231,10 @@ footer a:last-child {
     height: 142px; /* Wysokość elementu: 142px. */
   }
   .market-left {
-    left: 6%; /* Dopasowuje położenie pierwszego zrzutu do węższej karty na telefonie. */
+    transform: translate(-38px, 8px) rotate(-6deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(-38px, 8px) rotate(-6deg). */
   }
   .market-right {
-    right: 6%; /* Dopasowuje położenie drugiego zrzutu do węższej karty na telefonie. */
+    transform: translate(43px, 15px) rotate(5deg); /* Przesunięcie, obrót lub skala elementu bez zmiany układu sąsiadów: translate(43px, 15px) rotate(5deg). */
   }
 }
 
@@ -1422,7 +1416,7 @@ footer a:last-child {
 }
 .reveal.is-visible {
   opacity: 1; /* Pokazuje element po wejściu do widocznego obszaru. */
-  transform: none; /* Usuwa warstwę transformacji po animacji, aby Chrome w Windowsie renderował treść i obrazy w pełnej ostrości. */
+  transform: translateY(0); /* Przenosi element do jego naturalnego położenia. */
 }
 .projects .project:nth-child(2),
 .certificate-card:nth-child(2),
