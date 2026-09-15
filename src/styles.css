@@ -850,6 +850,13 @@ h2 {
   position: relative; /* Tworzy punkt odniesienia dla ikony spinacza. */
   display: flex; /* Pozwala polu pliku wykorzystać całą szerokość formularza. */
   align-items: center; /* Wyrównuje ikonę do środka kontrolki. */
+  min-width: 0; /* Pozwala skrócić długą nazwę pliku bez poszerzania formularza. */
+  min-height: 44px; /* Zachowuje wysokość zgodną z pozostałymi polami formularza. */
+  overflow: hidden; /* Utrzymuje niewidoczne pole i tekst wewnątrz zaokrąglonych krawędzi. */
+  border: 1px solid #dce5d9; /* Nadaje kontrolce takie samo obramowanie jak pozostałym polom. */
+  border-radius: 8px; /* Dopasowuje kształt wyboru plików do reszty formularza. */
+  background: #fbfcfa; /* Ujednolica tło kontrolki z polami tekstowymi. */
+  cursor: pointer; /* Informuje, że kliknięcie otwiera systemowy wybór plików. */
 }
 .attachment-control svg {
   position: absolute; /* Umieszcza ikonę wewnątrz pola bez zmiany jego szerokości. */
@@ -859,20 +866,39 @@ h2 {
   pointer-events: none; /* Pozwala kliknąć pole również bezpośrednio na ikonie. */
 }
 .attachment-control input {
-  padding-left: 42px; /* Zostawia miejsce na ikonę przed nazwą wybranego pliku. */
-  color: #607363; /* Zapewnia czytelny kolor nazwy załącznika. */
+  position: absolute; /* Nakłada natywne pole na całą własną kontrolkę wyboru plików. */
+  inset: 0; /* Rozciąga klikalne pole do wszystkich krawędzi kontrolki. */
+  z-index: 2; /* Utrzymuje natywny mechanizm wyboru plików nad warstwą wizualną. */
+  width: 100%; /* Pozwala kliknąć dowolne miejsce kontrolki. */
+  height: 100%; /* Obejmuje kliknięciem pełną wysokość kontrolki. */
+  padding: 0; /* Usuwa odstępy natywnego pola, które nie jest wizualnie wyświetlane. */
+  border: 0; /* Usuwa obramowanie natywnego pola ukrytego pod własnym wyglądem. */
+  opacity: 0; /* Ukrywa tekst generowany przez system i przeglądarkę. */
   cursor: pointer; /* Informuje kursorem o możliwości wyboru pliku. */
 }
-.attachment-control input::file-selector-button {
-  margin-right: 12px; /* Oddziela przycisk wyboru od nazwy pliku. */
-  padding: 7px 11px; /* Zapewnia wygodny obszar kliknięcia przycisku systemowego. */
-  border: 0; /* Usuwa domyślne obramowanie przycisku wyboru. */
+.attachment-button-text {
+  flex: none; /* Zachowuje pełną treść przycisku niezależnie od długości nazwy pliku. */
+  margin-left: 38px; /* Zostawia miejsce na ikonę spinacza po lewej stronie. */
+  padding: 7px 11px; /* Zapewnia tekstowi przycisku wygodny odstęp od krawędzi tła. */
   border-radius: 6px; /* Dopasowuje kształt przycisku do pozostałych kontrolek. */
   background: #eaf1e4; /* Wyróżnia akcję wyboru delikatnym zielonym tłem. */
   color: var(--green); /* Nadaje tekstowi przycisku firmowy kolor. */
-  font: inherit; /* Ujednolica krój pisma z resztą formularza. */
+  font-size: 11px; /* Utrzymuje krótki tekst akcji w kompaktowej skali. */
   font-weight: 800; /* Podkreśla interaktywny charakter przycisku. */
-  cursor: pointer; /* Informuje kursorem, że przycisk otwiera wybór pliku. */
+}
+.attachment-selection {
+  min-width: 0; /* Pozwala opisowi zmieścić się obok przycisku na wąskich ekranach. */
+  overflow: hidden; /* Ukrywa część bardzo długiej nazwy wychodzącą poza kontrolkę. */
+  padding: 0 12px; /* Oddziela nazwę pliku od przycisku oraz prawej krawędzi. */
+  color: #607363; /* Zapewnia czytelny, stonowany kolor informacji o wyborze. */
+  font-size: 11px; /* Dopasowuje wielkość opisu do pozostałych informacji formularza. */
+  font-weight: 500; /* Odróżnia opis wyboru od pogrubionego tekstu przycisku. */
+  text-overflow: ellipsis; /* Sygnalizuje skrócenie długiej nazwy wielokropkiem. */
+  white-space: nowrap; /* Utrzymuje opis wybranych plików w jednym wierszu. */
+}
+.attachment-control:focus-within {
+  border-color: #83ad70; /* Wyróżnia kontrolkę podczas obsługi klawiaturą. */
+  box-shadow: 0 0 0 3px #bddbaa55; /* Dodaje widoczny obrys fokusu zgodny z pozostałymi polami. */
 }
 .attachment-error {
   color: #ad3148; /* Wyróżnia błąd kontrastowym kolorem. */

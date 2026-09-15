@@ -9,6 +9,7 @@ export default function Contact() {
   const attachmentInputRef = useRef<HTMLInputElement>(null);
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [attachmentError, setAttachmentError] = useState('');
+  const [selectedAttachments, setSelectedAttachments] = useState<File[]>([]);
 
   const validateAttachments = (files: File[]) => {
     const selectedFiles = files.filter((file) => file.name);
@@ -164,11 +165,25 @@ export default function Contact() {
                   accept="image/png,image/jpeg,.png,.jpg,.jpeg"
                   multiple
                   onChange={(event) => {
-                    const error = validateAttachments(Array.from(event.currentTarget.files ?? []));
+                    const files = Array.from(event.currentTarget.files ?? []);
+                    const error = validateAttachments(files);
                     setAttachmentError(error);
-                    if (error) event.currentTarget.value = '';
+                    if (error) {
+                      event.currentTarget.value = '';
+                      setSelectedAttachments([]);
+                      return;
+                    }
+                    setSelectedAttachments(files);
                   }}
                 />
+                <span className="attachment-button-text">{t('contact.chooseFiles')}</span>
+                <span className="attachment-selection">
+                  {selectedAttachments.length === 0
+                    ? t('contact.noFilesSelected')
+                    : selectedAttachments.length === 1
+                      ? selectedAttachments[0].name
+                      : t('contact.selectedFilesCount', { count: selectedAttachments.length })}
+                </span>
               </span>
               <small>{t('contact.attachmentHint')}</small>
               {attachmentError && <span className="attachment-error">{attachmentError}</span>}
@@ -190,6 +205,7 @@ export default function Contact() {
               if (sendStatus !== 'sending') return;
               setSendStatus('sent');
               setAttachmentError('');
+              setSelectedAttachments([]);
               formRef.current?.reset();
               formRef.current
                 ?.querySelectorAll('.generated-attachment')
