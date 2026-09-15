@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { navigationHrefs } from '../data/navigation';
 import { useTranslation } from 'react-i18next';
+import FlagIcon from './FlagIcon';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -96,7 +97,7 @@ export default function Header() {
             title={t('accessibility.polish')}
             onClick={() => void changeLanguage('pl')}
           >
-            <span aria-hidden="true">🇵🇱</span>
+            <FlagIcon country="pl" />
           </button>
           <button
             type="button"
@@ -106,7 +107,7 @@ export default function Header() {
             title={t('accessibility.english')}
             onClick={() => void changeLanguage('en')}
           >
-            <span aria-hidden="true">🇬🇧</span>
+            <FlagIcon country="gb" />
           </button>
         </div>
         <button

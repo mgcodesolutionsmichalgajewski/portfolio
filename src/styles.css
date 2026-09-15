@@ -102,6 +102,13 @@ textarea {
   border-color: #cfddc9; /* Wyznacza czytelną granicę wybranego języka. */
   opacity: 1; /* Pokazuje aktywną flagę z pełną intensywnością. */
 }
+.language-flag {
+  display: block; /* Usuwa odstęp typowy dla grafiki osadzonej w linii tekstu. */
+  width: 24px; /* Ustawia jednakową szerokość obu flag w przełączniku języka. */
+  height: 16px; /* Zachowuje czytelne proporcje flag bez zwiększania nagłówka. */
+  border-radius: 2px; /* Delikatnie zaokrągla narożniki miniatury flagi. */
+  box-shadow: 0 0 0 1px rgb(28 48 35 / 18%); /* Dodaje subtelny kontur widoczny także wokół białej części polskiej flagi. */
+}
 .inline-link:hover,
 .project-link:hover {
   color: #76a04e; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #76a04e. */
