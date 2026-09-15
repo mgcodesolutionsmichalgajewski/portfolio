@@ -908,10 +908,60 @@ h2 {
 .contact button {
   width: 100%; /* Szerokość elementu: 100%. */
 }
-.form-note {
-  color: #859686; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #859686. */
-  font-size: 11px; /* Rozmiar znaków tekstu: 11px. */
-  margin: 13px 0 0; /* Zewnętrzny odstęp oddzielający element od sąsiadów: 13px 0 0. */
+.form-status {
+  display: flex; /* Ustawia ikonę statusu obok treści komunikatu. */
+  align-items: center; /* Wyrównuje ikonę do środka komunikatu. */
+  gap: 10px; /* Oddziela ikonę od tekstu statusu. */
+  min-height: 38px; /* Ogranicza przesunięcie układu podczas zmiany statusu formularza. */
+  margin-top: 13px; /* Oddziela komunikat od przycisku wysyłania. */
+  padding: 9px 11px; /* Zapewnia treści czytelny odstęp od krawędzi panelu. */
+  border: 1px solid transparent; /* Rezerwuje miejsce na obramowanie komunikatów specjalnych. */
+  border-radius: 8px; /* Dopasowuje kształt statusu do pól formularza. */
+  color: #859686; /* Nadaje neutralnemu komunikatowi stonowany kolor. */
+  font-size: 11px; /* Utrzymuje informację pomocniczą w odpowiedniej skali. */
+  line-height: 1.45; /* Zapewnia czytelny odstęp między wierszami komunikatu. */
+}
+.form-status svg {
+  width: 21px; /* Zachowuje czytelny rozmiar ikony statusu. */
+  height: 21px; /* Utrzymuje prawidłowe proporcje ikony. */
+  flex: none; /* Zapobiega zmniejszaniu ikony przy dłuższym komunikacie. */
+}
+.form-status span {
+  display: flex; /* Pozwala ustawić nagłówek i opis jeden pod drugim. */
+  flex-direction: column; /* Umieszcza treść komunikatu pod jego nagłówkiem. */
+  gap: 1px; /* Zachowuje niewielki odstęp między nagłówkiem i opisem. */
+}
+.form-status strong {
+  color: inherit; /* Zachowuje kolor odpowiedni dla aktualnego statusu. */
+  font-size: 12px; /* Wyróżnia nagłówek potwierdzenia względem opisu. */
+  font-weight: 800; /* Nadaje nagłówkowi wyraźną hierarchię wizualną. */
+}
+.form-status.idle {
+  min-height: 0; /* Zachowuje kompaktową wysokość neutralnej informacji. */
+  padding: 0; /* Pozostawia neutralny komunikat bez wyglądu alertu. */
+}
+.form-status.sending {
+  border-color: #d8e3d4; /* Delikatnie wyznacza granicę panelu podczas wysyłania. */
+  background: #f5f8f2; /* Wyróżnia trwającą operację subtelnym tłem. */
+  color: #607363; /* Zapewnia czytelność informacji o wysyłaniu. */
+}
+.form-status.sent {
+  border-color: #bcd7b3; /* Wyznacza zieloną granicę potwierdzenia wysłania. */
+  background: #edf7e9; /* Nadaje potwierdzeniu wyraźne, jasnozielone tło. */
+  color: #315e35; /* Zapewnia mocny kontrast treści komunikatu sukcesu. */
+}
+.form-status.error {
+  border-color: #e5bcc5; /* Wyznacza czytelną granicę komunikatu błędu. */
+  background: #fff1f3; /* Wyróżnia błąd delikatnym czerwonym tłem. */
+  color: #9d2940; /* Nadaje treści błędu wyraźny czerwony kolor. */
+}
+.status-spinner {
+  animation: status-spin 0.8s linear infinite; /* Obraca ikonę podczas oczekiwania na zakończenie wysyłki. */
+}
+@keyframes status-spin {
+  to {
+    transform: rotate(360deg); /* Wykonuje pełny obrót ikony ładowania. */
+  }
 }
 footer {
   background: #183421; /* Kolor lub obraz wypełniający tło elementu: #183421. */
@@ -1251,10 +1301,6 @@ footer a:last-child {
   opacity: 0.65; /* Przezroczystość elementu i jego zawartości: 0.65. */
   cursor: wait; /* Wygląd kursora wskazujący możliwe działanie: wait. */
 }
-.form-note.error {
-  color: #ad3148; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #ad3148. */
-}
-
 .form-provider {
   color: #9aa99c; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #9aa99c. */
   font-size: 10px; /* Rozmiar znaków tekstu: 10px. */

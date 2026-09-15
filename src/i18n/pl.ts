@@ -135,7 +135,8 @@ export const pl = {
     deliveryFrame: 'Odpowiedź usługi wysyłającej formularz',
     sending: 'Wysyłanie…',
     send: 'Wyślij wiadomość',
-    sent: 'Wiadomość została przyjęta. Dziękuję!',
+    sentTitle: 'Wiadomość wysłana',
+    sent: 'Wiadomość została wysłana. Dziękuję!',
     error:
       'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na podany adres.',
     idle: 'Wiadomość zostanie wysłana bez opuszczania strony.',

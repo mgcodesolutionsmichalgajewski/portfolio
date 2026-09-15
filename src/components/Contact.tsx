@@ -1,5 +1,15 @@
 import { useRef, useState, type FormEvent } from 'react';
-import { ArrowUpRight, Mail, MapPin, Paperclip, Phone, Send } from 'lucide-react';
+import {
+  AlertCircle,
+  ArrowUpRight,
+  CheckCircle2,
+  LoaderCircle,
+  Mail,
+  MapPin,
+  Paperclip,
+  Phone,
+  Send,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LinkedInIcon from './LinkedInIcon';
 
@@ -109,6 +119,9 @@ export default function Contact() {
             encType="multipart/form-data"
             target="formsubmit-target"
             onSubmit={send}
+            onChange={() => {
+              if (sendStatus === 'sent' || sendStatus === 'error') setSendStatus('idle');
+            }}
             data-reveal
           >
             <input type="hidden" name="_subject" />
@@ -192,9 +205,15 @@ export default function Contact() {
               {sendStatus === 'sending' ? t('contact.sending') : t('contact.send')}{' '}
               <Send size={17} />
             </button>
-            <p className={`form-note ${sendStatus === 'error' ? 'error' : ''}`} role="status">
-              {statusMessage}
-            </p>
+            <div className={`form-status ${sendStatus}`} role="status" aria-live="polite">
+              {sendStatus === 'sent' && <CheckCircle2 />}
+              {sendStatus === 'error' && <AlertCircle />}
+              {sendStatus === 'sending' && <LoaderCircle className="status-spinner" />}
+              <span>
+                {sendStatus === 'sent' && <strong>{t('contact.sentTitle')}</strong>}
+                {statusMessage}
+              </span>
+            </div>
             <p className="form-provider">{t('contact.provider')}</p>
           </form>
           <iframe
