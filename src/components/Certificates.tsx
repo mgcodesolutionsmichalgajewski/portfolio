@@ -1,6 +1,19 @@
 import { ArrowUpRight } from 'lucide-react';
 import { publicAsset } from '../publicAsset';
 
+const certificates = [
+  {
+    id: '0c846bc6-178c-4a78-aa16-e5dffd25902b',
+    name: 'HashiCorp Certified: Terraform Associate (002)',
+    image: 'certificates/terraform-associate.png',
+  },
+  {
+    id: '581a21a6-c968-454d-a053-942a6204b39d',
+    name: 'Oracle Certified Associate, Java SE 8 Programmer',
+    image: 'certificates/oracle-java-se-8.png',
+  },
+];
+
 export default function Certificates() {
   return (
     <section className="section wrap two certs" id="certyfikaty">
@@ -14,36 +27,22 @@ export default function Certificates() {
         <p>Moje certyfikaty można zweryfikować bezpośrednio w serwisie Credly.</p>
       </div>
       <div className="cert-list">
-        {[
-          [
-            '0c846bc6-178c-4a78-aa16-e5dffd25902b',
-            'HashiCorp Certified: Terraform Associate (002)',
-            'icons/terraform.svg',
-            'HashiCorp Terraform',
-          ],
-          [
-            '581a21a6-c968-454d-a053-942a6204b39d',
-            'Oracle Certified Associate, Java SE 8 Programmer',
-            'icons/java.svg',
-            'Java',
-          ],
-        ].map(([id, name, logo, logoAlt], i) => (
-          <a
-            key={id}
-            href={`https://www.credly.com/badges/${id}?source=linked_in_profile`}
-            target="_blank"
-            rel="noreferrer"
-            data-reveal
-          >
-            <span className="award">
-              <img src={publicAsset(logo)} alt={logoAlt} />
-            </span>
-            <span>
-              <small>Credly · certyfikat 0{i + 1}</small>
-              <b>{name}</b>
-            </span>
-            <ArrowUpRight size={19} />
-          </a>
+        {certificates.map(({ id, name, image }) => (
+          <article className="certificate-card" key={id} data-reveal>
+            <a
+              href={`https://www.credly.com/badges/${id}?source=linked_in_profile`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="certificate-image-frame">
+                <img className="certificate-image" src={publicAsset(image)} alt={name} />
+              </span>
+              <span className="certificate-name">
+                <span>{name}</span>
+                <ArrowUpRight size={19} />
+              </span>
+            </a>
+          </article>
         ))}
       </div>
     </section>

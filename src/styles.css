@@ -612,45 +612,51 @@ h2 {
 }
 .cert-list {
   display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
-  gap: 12px; /* Odstęp między elementami układu flex lub grid: 12px. */
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  ); /* Rozstawia dwie oficjalne odznaki w równych kolumnach. */
+  gap: 16px; /* Oddziela od siebie karty certyfikatów. */
 }
-.cert-list a {
-  display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
-  align-items: center; /* Wyrównanie dzieci w poprzek głównego kierunku układu: center. */
-  gap: 16px; /* Odstęp między elementami układu flex lub grid: 16px. */
+.certificate-card {
+  min-width: 0; /* Pozwala karcie zmniejszać się bez rozsadzania siatki. */
   background: #f1f4eb; /* Kolor lub obraz wypełniający tło elementu: #f1f4eb. */
   border: 1px solid #e1e9dc; /* Obramowanie wokół wszystkich krawędzi elementu: 1px solid #e1e9dc. */
-  border-radius: 11px; /* Zaokrąglenie narożników elementu: 11px. */
-  padding: 17px; /* Wewnętrzny odstęp między treścią a krawędzią elementu: 17px. */
+  border-radius: 14px; /* Zaokrągla kartę zgodnie z pozostałymi elementami strony. */
+  padding: 20px 14px 16px; /* Zapewnia odznace i podpisowi czytelny odstęp od krawędzi. */
+  text-align: center; /* Centruje odznakę i podpis certyfikatu. */
 }
-.cert-list a > span:nth-child(2) {
-  flex: 1; /* Udział elementu w dostępnej przestrzeni układu flex: 1. */
+.certificate-card > a {
+  display: block; /* Łączy grafikę oraz podpis w jeden obszar prowadzący do Credly. */
 }
-.award {
-  width: 54px; /* Szerokość elementu: 54px. */
-  height: 54px; /* Wysokość elementu: 54px. */
-  border-radius: 10px; /* Zaokrąglenie narożników elementu: 10px. */
-  background: #dcebcf; /* Kolor lub obraz wypełniający tło elementu: #dcebcf. */
-  color: #6f994e; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #6f994e. */
-  display: grid; /* Tryb rozmieszczania elementu i jego dzieci: grid. */
-  place-items: center; /* Jednoczesne wyrównanie dzieci w obu osiach siatki: center. */
+.certificate-image-frame {
+  display: grid; /* Tworzy obszar do wycentrowania powiększonej grafiki odznaki. */
+  height: 190px; /* Zapewnia obu certyfikatom jednakową przestrzeń nad podpisem. */
+  place-items: center; /* Ustawia powiększoną odznakę na środku dostępnego pola. */
+  overflow: hidden; /* Ukrywa przezroczyste marginesy pliku wychodzące poza pole grafiki. */
 }
-.cert-list small,
-.cert-list b {
-  display: block; /* Tryb rozmieszczania elementu i jego dzieci: block. */
+.certificate-image {
+  display: block; /* Usuwa dolny odstęp charakterystyczny dla obrazu osadzonego w linii tekstu. */
+  width: 100%; /* Wykorzystuje dostępną szerokość karty do pokazania dużej odznaki. */
+  height: 100%; /* Dopasowuje płótno grafiki do wysokości przygotowanego pola. */
+  object-fit: contain; /* Pokazuje całą odznakę bez przycinania i zmiany proporcji. */
+  transform: scale(
+    1.2
+  ); /* Powiększa właściwy znak, kompensując przezroczyste marginesy pliku Credly. */
 }
-.cert-list small {
-  font-size: 10px; /* Rozmiar znaków tekstu: 10px. */
-  text-transform: uppercase; /* Zmiana sposobu wyświetlania wielkich i małych liter: uppercase. */
-  letter-spacing: 0.1em; /* Odstęp między znakami tekstu: 0.1em. */
-  color: #799677; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #799677. */
-  font-weight: 800; /* Grubość znaków tekstu: 800. */
+.certificate-name {
+  display: flex; /* Ustawia nazwę i ikonę odnośnika w jednym wierszu. */
+  align-items: center; /* Wyrównuje ikonę względem nazwy certyfikatu. */
+  justify-content: center; /* Centruje podpis pod oficjalną odznaką. */
+  gap: 7px; /* Oddziela nazwę certyfikatu od ikony otwarcia. */
+  min-height: 48px; /* Utrzymuje wygodny obszar kliknięcia również na telefonie. */
+  color: var(--green); /* Wyróżnia odnośnik firmowym, ciemnozielonym kolorem. */
+  font-size: 12px; /* Utrzymuje długie nazwy certyfikatów w czytelnej skali. */
+  font-weight: 800; /* Podkreśla, że podpis jest odnośnikiem do weryfikacji. */
+  line-height: 1.4; /* Zapewnia czytelny odstęp przy nazwie zawiniętej do kilku wierszy. */
 }
-.cert-list b {
-  font: /* Zestaw cech pisma: grubość, rozmiar, interlinia i krój; wartość jest kontynuowana w kolejnych liniach. */
-    800 16px Manrope,
-    sans-serif;
-  margin-top: 4px; /* Zewnętrzny odstęp nad elementem: 4px. */
+.certificate-name svg {
+  flex: none; /* Zapobiega zmniejszeniu ikony przy długiej nazwie certyfikatu. */
 }
 .contact {
   background: #203f2c; /* Kolor lub obraz wypełniający tło elementu: #203f2c. */
@@ -1296,7 +1302,7 @@ footer a:last-child {
   transform: translateY(0); /* Przenosi element do jego naturalnego położenia. */
 }
 .projects .project:nth-child(2),
-.cert-list a:nth-child(2),
+.certificate-card:nth-child(2),
 .technology-group:nth-child(even) {
   transition-delay: 0.1s; /* Lekko opóźnia co drugi element, tworząc naturalną sekwencję. */
 }
@@ -1327,21 +1333,13 @@ footer a:last-child {
 }
 
 /* Graficzne oznaczenia certyfikatów */
-.award {
-  padding: 10px; /* Zapewnia logo bezpieczny odstęp od krawędzi kafelka. */
-}
-.award img {
-  width: 100%; /* Dopasowuje logo do szerokości pola certyfikatu. */
-  height: 100%; /* Dopasowuje logo do wysokości pola certyfikatu. */
-  object-fit: contain; /* Zachowuje pełne proporcje i widoczność logo. */
-}
-.cert-list a {
+.certificate-card {
   transition:
     transform 0.22s ease,
     border-color 0.22s ease,
     box-shadow 0.22s ease; /* Płynnie podkreśla interaktywność certyfikatu. */
 }
-.cert-list a:hover {
+.certificate-card:hover {
   transform: translateX(5px); /* Przesuwa certyfikat w kierunku ikony otwarcia. */
   border-color: #bdd0b1; /* Wzmacnia zieloną ramkę podczas wskazania. */
   box-shadow: 0 12px 30px #1b352910; /* Dodaje niewielką głębię aktywnej karcie. */
@@ -1397,6 +1395,14 @@ footer a:last-child {
 }
 
 @media (max-width: 600px) {
+  .cert-list {
+    grid-template-columns: 1fr; /* Układa odznaki pionowo, aby zachowały pełny rozmiar na telefonie. */
+  }
+  .certificate-card {
+    max-width: 330px; /* Ogranicza szerokość pojedynczej karty na małym ekranie. */
+    width: 100%; /* Pozwala karcie wykorzystać dostępną szerokość telefonu. */
+    justify-self: center; /* Centruje kartę certyfikatu w mobilnej kolumnie. */
+  }
   .section {
     padding-top: 64px; /* Skraca pustą przestrzeń nad sekcjami na telefonie. */
     padding-bottom: 64px; /* Skraca pustą przestrzeń pod sekcjami na telefonie. */
@@ -1429,7 +1435,7 @@ footer a:last-child {
     transition: none; /* Wyłącza przejścia wejścia. */
   }
   .project,
-  .cert-list a,
+  .certificate-card,
   .technology-tile {
     transition: none; /* Wyłącza pozostałe animacje interfejsu. */
   }
