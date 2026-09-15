@@ -17,22 +17,19 @@ export default function Contact() {
     }
     setSendStatus('sending');
     try {
-      const response = await fetch(
-        'https://formsubmit.co/ajax/mgcodesolutions.michalgajewski@gmail.com',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            name: String(data.get('name') || '').trim(),
-            email: String(data.get('email') || '').trim(),
-            subject: String(data.get('subject') || '').trim(),
-            _subject: String(data.get('subject') || '').trim(),
-            message: String(data.get('message') || '').trim(),
-            _honey: '',
-            _url: window.location.href,
-          }),
-        },
-      );
+      const response = await fetch('https://formsubmit.co/ajax/kontakt@mgcodesolutions.pl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: String(data.get('name') || '').trim(),
+          email: String(data.get('email') || '').trim(),
+          subject: String(data.get('subject') || '').trim(),
+          _subject: String(data.get('subject') || '').trim(),
+          message: String(data.get('message') || '').trim(),
+          _honey: '',
+          _url: window.location.href,
+        }),
+      });
       const result = (await response.json()) as { success?: boolean | string };
       if (!response.ok || (result.success !== true && result.success !== 'true'))
         throw new Error('Message could not be sent');
@@ -68,8 +65,8 @@ export default function Contact() {
               <br />
               Michał Gajewski
             </h3>
-            <a href="mailto:mgcodesolutions.michalgajewski@gmail.com">
-              <Mail /> mgcodesolutions.michalgajewski@gmail.com
+            <a href="mailto:kontakt@mgcodesolutions.pl">
+              <Mail /> kontakt@mgcodesolutions.pl
             </a>
             <a href="tel:+48691235088">
               <Phone /> +48 691 235 088
