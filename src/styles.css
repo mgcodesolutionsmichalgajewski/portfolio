@@ -1245,6 +1245,14 @@ footer a:last-child {
   opacity: 0 !important; /* Przezroczystość elementu i jego zawartości: 0 !important. */
   pointer-events: none !important; /* Możliwość reagowania elementu na kliknięcia i ruch wskaźnika: none !important. */
 }
+.formsubmit-target {
+  position: absolute; /* Usuwa techniczną ramkę odpowiedzi poza widoczny układ strony. */
+  width: 1px; /* Ogranicza szerokość niewidocznego celu formularza do jednego piksela. */
+  height: 1px; /* Ogranicza wysokość niewidocznego celu formularza do jednego piksela. */
+  border: 0; /* Usuwa domyślne obramowanie ramki. */
+  opacity: 0; /* Ukrywa odpowiedź FormSubmit przed użytkownikiem. */
+  pointer-events: none; /* Wyłącza możliwość przypadkowej interakcji z ramką. */
+}
 .contact button:disabled {
   opacity: 0.65; /* Przezroczystość elementu i jego zawartości: 0.65. */
   cursor: wait; /* Wygląd kursora wskazujący możliwe działanie: wait. */

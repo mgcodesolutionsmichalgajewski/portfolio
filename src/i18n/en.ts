@@ -129,6 +129,7 @@ export const en = {
     attachmentHint: 'PNG or JPG/JPEG, up to 10 MB in total.',
     attachmentTypeError: 'Only PNG and JPG/JPEG files are allowed.',
     attachmentSizeError: 'The total file size cannot exceed 10 MB.',
+    deliveryFrame: 'Form delivery service response',
     sending: 'Sending…',
     send: 'Send message',
     sent: 'Your message has been received. Thank you!',

@@ -1,10 +1,12 @@
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { ArrowUpRight, Mail, MapPin, Paperclip, Phone, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LinkedInIcon from './LinkedInIcon';
 
 export default function Contact() {
   const { t } = useTranslation();
+  const formRef = useRef<HTMLFormElement>(null);
+  const attachmentInputRef = useRef<HTMLInputElement>(null);
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [attachmentError, setAttachmentError] = useState('');
 
@@ -17,39 +19,38 @@ export default function Contact() {
     return '';
   };
 
-  async function send(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function send(event: FormEvent<HTMLFormElement>) {
     const form = event.currentTarget;
     const data = new FormData(form);
-    const attachments = data
-      .getAll('attachment')
-      .filter((entry): entry is File => entry instanceof File);
+    const attachments = Array.from(attachmentInputRef.current?.files ?? []);
     const validationError = validateAttachments(attachments);
     setAttachmentError(validationError);
-    if (validationError) return;
+    if (validationError) {
+      event.preventDefault();
+      return;
+    }
     if (String(data.get('_honey') || '').trim()) {
+      event.preventDefault();
       setSendStatus('sent');
       return;
     }
-    data.set('_subject', String(data.get('subject') || '').trim());
-    data.set('_honey', '');
-    data.set('_url', window.location.href);
+    const subjectField = form.elements.namedItem('_subject') as HTMLInputElement;
+    const urlField = form.elements.namedItem('_url') as HTMLInputElement;
+    subjectField.value = String(data.get('subject') || '').trim();
+    urlField.value = window.location.href;
+    form.querySelectorAll('.generated-attachment').forEach((input) => input.remove());
+    attachments.forEach((file, index) => {
+      const input = document.createElement('input');
+      const transfer = new DataTransfer();
+      transfer.items.add(file);
+      input.type = 'file';
+      input.name = index === 0 ? 'attachment' : `attachment${index + 1}`;
+      input.files = transfer.files;
+      input.className = 'generated-attachment';
+      input.hidden = true;
+      form.append(input);
+    });
     setSendStatus('sending');
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/kontakt@mgcodesolutions.pl', {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: data,
-      });
-      const result = (await response.json()) as { success?: boolean | string };
-      if (!response.ok || (result.success !== true && result.success !== 'true'))
-        throw new Error('Message could not be sent');
-      setSendStatus('sent');
-      setAttachmentError('');
-      form.reset();
-    } catch {
-      setSendStatus('error');
-    }
   }
 
   const statusMessage =
@@ -100,7 +101,18 @@ export default function Contact() {
               LinkedIn <ArrowUpRight size={17} />
             </a>
           </div>
-          <form onSubmit={send} data-reveal>
+          <form
+            ref={formRef}
+            action="https://formsubmit.co/kontakt@mgcodesolutions.pl"
+            method="POST"
+            encType="multipart/form-data"
+            target="formsubmit-target"
+            onSubmit={send}
+            data-reveal
+          >
+            <input type="hidden" name="_subject" />
+            <input type="hidden" name="_url" />
+            <input type="hidden" name="_captcha" value="false" />
             <input
               className="honeypot"
               name="_honey"
@@ -147,7 +159,7 @@ export default function Contact() {
               <span className="attachment-control">
                 <Paperclip size={17} />
                 <input
-                  name="attachment"
+                  ref={attachmentInputRef}
                   type="file"
                   accept="image/png,image/jpeg,.png,.jpg,.jpeg"
                   multiple
@@ -170,6 +182,20 @@ export default function Contact() {
             </p>
             <p className="form-provider">{t('contact.provider')}</p>
           </form>
+          <iframe
+            className="formsubmit-target"
+            name="formsubmit-target"
+            title={t('contact.deliveryFrame')}
+            onLoad={() => {
+              if (sendStatus !== 'sending') return;
+              setSendStatus('sent');
+              setAttachmentError('');
+              formRef.current?.reset();
+              formRef.current
+                ?.querySelectorAll('.generated-attachment')
+                .forEach((input) => input.remove());
+            }}
+          />
         </div>
       </div>
     </section>
