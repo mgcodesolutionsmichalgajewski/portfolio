@@ -834,6 +834,44 @@ h2 {
 .contact textarea::placeholder {
   color: #9cae9b; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #9cae9b. */
 }
+.attachment-field small {
+  color: #859686; /* Nadaje ograniczeniom pliku wygląd pomocniczej informacji. */
+  font-size: 10px; /* Utrzymuje opis formatu i rozmiaru w dyskretnej skali. */
+  font-weight: 500; /* Odróżnia podpowiedź od pogrubionej etykiety pola. */
+}
+.attachment-control {
+  position: relative; /* Tworzy punkt odniesienia dla ikony spinacza. */
+  display: flex; /* Pozwala polu pliku wykorzystać całą szerokość formularza. */
+  align-items: center; /* Wyrównuje ikonę do środka kontrolki. */
+}
+.attachment-control svg {
+  position: absolute; /* Umieszcza ikonę wewnątrz pola bez zmiany jego szerokości. */
+  left: 14px; /* Zachowuje taki sam odstęp jak tekst pozostałych pól. */
+  z-index: 1; /* Utrzymuje ikonę nad tłem kontrolki pliku. */
+  color: #6f856f; /* Nadaje ikonie stonowany kolor pasujący do formularza. */
+  pointer-events: none; /* Pozwala kliknąć pole również bezpośrednio na ikonie. */
+}
+.attachment-control input {
+  padding-left: 42px; /* Zostawia miejsce na ikonę przed nazwą wybranego pliku. */
+  color: #607363; /* Zapewnia czytelny kolor nazwy załącznika. */
+  cursor: pointer; /* Informuje kursorem o możliwości wyboru pliku. */
+}
+.attachment-control input::file-selector-button {
+  margin-right: 12px; /* Oddziela przycisk wyboru od nazwy pliku. */
+  padding: 7px 11px; /* Zapewnia wygodny obszar kliknięcia przycisku systemowego. */
+  border: 0; /* Usuwa domyślne obramowanie przycisku wyboru. */
+  border-radius: 6px; /* Dopasowuje kształt przycisku do pozostałych kontrolek. */
+  background: #eaf1e4; /* Wyróżnia akcję wyboru delikatnym zielonym tłem. */
+  color: var(--green); /* Nadaje tekstowi przycisku firmowy kolor. */
+  font: inherit; /* Ujednolica krój pisma z resztą formularza. */
+  font-weight: 800; /* Podkreśla interaktywny charakter przycisku. */
+  cursor: pointer; /* Informuje kursorem, że przycisk otwiera wybór pliku. */
+}
+.attachment-error {
+  color: #ad3148; /* Wyróżnia błąd kontrastowym kolorem. */
+  font-size: 11px; /* Pokazuje komunikat czytelnie bez powiększania formularza. */
+  font-weight: 700; /* Zwiększa widoczność przyczyny odrzucenia pliku. */
+}
 .contact button {
   width: 100%; /* Szerokość elementu: 100%. */
 }

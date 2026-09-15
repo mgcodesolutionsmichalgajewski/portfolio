@@ -1,39 +1,51 @@
 import { useState, type FormEvent } from 'react';
-import { ArrowUpRight, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { ArrowUpRight, Mail, MapPin, Paperclip, Phone, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LinkedInIcon from './LinkedInIcon';
 
 export default function Contact() {
   const { t } = useTranslation();
   const [sendStatus, setSendStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [attachmentError, setAttachmentError] = useState('');
+
+  const validateAttachments = (files: File[]) => {
+    const selectedFiles = files.filter((file) => file.name);
+    if (selectedFiles.some((file) => !['image/png', 'image/jpeg'].includes(file.type)))
+      return t('contact.attachmentTypeError');
+    const totalSize = selectedFiles.reduce((size, file) => size + file.size, 0);
+    if (totalSize > 10 * 1024 * 1024) return t('contact.attachmentSizeError');
+    return '';
+  };
 
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    const attachments = data
+      .getAll('attachment')
+      .filter((entry): entry is File => entry instanceof File);
+    const validationError = validateAttachments(attachments);
+    setAttachmentError(validationError);
+    if (validationError) return;
     if (String(data.get('_honey') || '').trim()) {
       setSendStatus('sent');
       return;
     }
+    data.set('_subject', String(data.get('subject') || '').trim());
+    data.set('_honey', '');
+    data.set('_url', window.location.href);
     setSendStatus('sending');
     try {
       const response = await fetch('https://formsubmit.co/ajax/kontakt@mgcodesolutions.pl', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: String(data.get('name') || '').trim(),
-          email: String(data.get('email') || '').trim(),
-          subject: String(data.get('subject') || '').trim(),
-          _subject: String(data.get('subject') || '').trim(),
-          message: String(data.get('message') || '').trim(),
-          _honey: '',
-          _url: window.location.href,
-        }),
+        headers: { Accept: 'application/json' },
+        body: data,
       });
       const result = (await response.json()) as { success?: boolean | string };
       if (!response.ok || (result.success !== true && result.success !== 'true'))
         throw new Error('Message could not be sent');
       setSendStatus('sent');
+      setAttachmentError('');
       form.reset();
     } catch {
       setSendStatus('error');
@@ -129,6 +141,25 @@ export default function Contact() {
                 placeholder={t('contact.messagePlaceholder')}
                 required
               />
+            </label>
+            <label className="attachment-field">
+              {t('contact.attachment')}
+              <span className="attachment-control">
+                <Paperclip size={17} />
+                <input
+                  name="attachment"
+                  type="file"
+                  accept="image/png,image/jpeg,.png,.jpg,.jpeg"
+                  multiple
+                  onChange={(event) => {
+                    const error = validateAttachments(Array.from(event.currentTarget.files ?? []));
+                    setAttachmentError(error);
+                    if (error) event.currentTarget.value = '';
+                  }}
+                />
+              </span>
+              <small>{t('contact.attachmentHint')}</small>
+              {attachmentError && <span className="attachment-error">{attachmentError}</span>}
             </label>
             <button className="btn primary" type="submit" disabled={sendStatus === 'sending'}>
               {sendStatus === 'sending' ? t('contact.sending') : t('contact.send')}{' '}
