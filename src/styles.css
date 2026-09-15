@@ -74,7 +74,6 @@ textarea {
   font-size: 13px; /* Rozmiar znaków tekstu: 13px. */
   font-weight: 700; /* Grubość znaków tekstu: 700. */
 }
-.links a:hover,
 .inline-link:hover,
 .project-link:hover {
   color: #76a04e; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #76a04e. */
@@ -1278,26 +1277,10 @@ footer a:last-child {
 
 /* Aktywna pozycja nawigacji */
 .links a {
-  position: relative; /* Tworzy punkt odniesienia dla podkreślenia aktywnej sekcji. */
   padding-block: 8px; /* Powiększa pionowy obszar kliknięcia odnośnika. */
 }
-.links a::after {
-  content: ''; /* Tworzy dekoracyjne podkreślenie bez dodatkowego elementu HTML. */
-  position: absolute; /* Umieszcza podkreślenie niezależnie od tekstu odnośnika. */
-  right: 0; /* Wyrównuje koniec podkreślenia do prawej krawędzi odnośnika. */
-  bottom: 1px; /* Umieszcza podkreślenie tuż pod tekstem. */
-  left: 0; /* Rozciąga podkreślenie od lewej krawędzi odnośnika. */
-  height: 2px; /* Nadaje podkreśleniu subtelną grubość. */
-  background: #8ab262; /* Używa zielonego akcentu zgodnego z identyfikacją strony. */
-  border-radius: 2px; /* Zaokrągla końce podkreślenia. */
-  transform: scaleX(0); /* Ukrywa podkreślenie, dopóki sekcja nie jest aktywna. */
-  transform-origin: right; /* Powoduje zwijanie podkreślenia w stronę prawej krawędzi. */
-  transition: transform 0.22s ease; /* Płynnie pokazuje i ukrywa aktywny stan. */
-}
-.links a:hover::after,
-.links a.active::after {
-  transform: scaleX(1); /* Pokazuje pełną linię przy aktywnej sekcji lub najechaniu. */
-  transform-origin: left; /* Rozwija linię od lewej strony. */
+.links a.active {
+  color: #76a04e; /* Wyróżnia aktywną sekcję zielonym kolorem tekstu. */
 }
 
 /* Animacje wejścia treści */
@@ -1392,6 +1375,9 @@ footer a:last-child {
   .links a.active {
     color: #76a04e; /* Wyróżnia aktywną pozycję w rozwijanym menu mobilnym. */
   }
+  .footer > a:last-child {
+    display: none; /* Ukrywa tekstowy powrót na górę, ponieważ na telefonie zastępuje go pływająca strzałka. */
+  }
   .back-to-top {
     position: fixed; /* Utrzymuje przycisk w stałym miejscu podczas przewijania. */
     right: 18px; /* Odsuwa przycisk od prawej krawędzi telefonu. */
@@ -1444,8 +1430,7 @@ footer a:last-child {
   }
   .project,
   .cert-list a,
-  .technology-tile,
-  .links a::after {
+  .technology-tile {
     transition: none; /* Wyłącza pozostałe animacje interfejsu. */
   }
 }

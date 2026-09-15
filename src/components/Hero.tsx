@@ -4,7 +4,7 @@ import { publicAsset } from '../publicAsset';
 export default function Hero() {
   return (
     <>
-      <section className="hero wrap">
+      <section className="hero wrap" id="start">
         <div>
           <div className="pill">● &nbsp; Software engineer · Atlassian · Polska</div>
           <h1>

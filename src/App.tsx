@@ -38,7 +38,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main id="start">
+      <main>
         <Hero />
         <About />
         <Experience />
