@@ -1141,6 +1141,7 @@ footer a:last-child {
   height: 100%; /* Skaluje gotową miniaturę do wysokości obszaru projektu. */
   object-fit: contain; /* Pokazuje całą przygotowaną kompozycję bez dodatkowego kadrowania. */
   object-position: center; /* Ustawia gotową kompozycję na środku obszaru grafiki. */
+  image-rendering: -webkit-optimize-contrast; /* Włącza dokładniejsze skalowanie gotowej miniatury w przeglądarkach Chromium na Windowsie. */
 }
 .cat-art .art-note {
   z-index: 4; /* Kolejność nakładania elementów; większa liczba trafia wyżej: 4. */
