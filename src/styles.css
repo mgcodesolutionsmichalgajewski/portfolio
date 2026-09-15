@@ -1132,6 +1132,7 @@ footer a:last-child {
   height: 234px; /* Wysokość elementu: 234px. */
   object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
   object-position: top; /* Położenie obrazu wewnątrz jego ramki: top. */
+  image-rendering: -webkit-optimize-contrast; /* Zwiększa ostrość miniatury zmniejszanej przez Chrome, szczególnie w systemie Windows. */
   border: 4px solid white; /* Obramowanie wokół wszystkich krawędzi elementu: 4px solid white. */
   border-radius: 17px; /* Zaokrąglenie narożników elementu: 17px. */
   box-shadow: 0 15px 30px #765a2d48; /* Cień nadający elementowi głębię: 0 15px 30px #765a2d48. */
@@ -1186,6 +1187,7 @@ footer a:last-child {
   height: 170px; /* Wysokość elementu: 170px. */
   object-fit: cover; /* Sposób dopasowania obrazu do jego ramki: cover. */
   object-position: center top; /* Położenie obrazu wewnątrz jego ramki: center top. */
+  image-rendering: -webkit-optimize-contrast; /* Zwiększa ostrość miniatury zmniejszanej przez Chrome, szczególnie w systemie Windows. */
   border: 5px solid #fff; /* Obramowanie wokół wszystkich krawędzi elementu: 5px solid #fff. */
   border-radius: 9px; /* Zaokrąglenie narożników elementu: 9px. */
   box-shadow: 0 16px 35px #28443238; /* Cień nadający elementowi głębię: 0 16px 35px #28443238. */
