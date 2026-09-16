@@ -130,6 +130,7 @@ export const en = {
     chooseFiles: 'Choose files',
     noFilesSelected: 'No files selected',
     selectedFilesCount: 'Selected files: {{count}}',
+    clearAttachments: 'Remove attachments',
     attachmentTypeError: 'Only PNG and JPG/JPEG files are allowed.',
     attachmentSizeError: 'The total file size cannot exceed 10 MB.',
     deliveryFrame: 'Form delivery service response',

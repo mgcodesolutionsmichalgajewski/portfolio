@@ -9,6 +9,7 @@ import {
   Paperclip,
   Phone,
   Send,
+  Trash2,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import LinkedInIcon from './LinkedInIcon';
@@ -28,6 +29,13 @@ export default function Contact() {
     const totalSize = selectedFiles.reduce((size, file) => size + file.size, 0);
     if (totalSize > 10 * 1024 * 1024) return t('contact.attachmentSizeError');
     return '';
+  };
+
+  const clearAttachments = () => {
+    if (attachmentInputRef.current) attachmentInputRef.current.value = '';
+    setSelectedAttachments([]);
+    setAttachmentError('');
+    if (sendStatus === 'sent' || sendStatus === 'error') setSendStatus('idle');
   };
 
   function send(event: FormEvent<HTMLFormElement>) {
@@ -168,11 +176,16 @@ export default function Contact() {
                 required
               />
             </label>
-            <label className="attachment-field">
-              {t('contact.attachment')}
-              <span className="attachment-control">
-                <Paperclip size={17} />
+            <div className="attachment-field">
+              <label className="attachment-label" htmlFor="attachments">
+                {t('contact.attachment')}
+              </label>
+              <div
+                className={`attachment-control ${selectedAttachments.length > 0 ? 'has-selection' : ''}`}
+              >
+                <Paperclip className="attachment-paperclip" size={17} />
                 <input
+                  id="attachments"
                   ref={attachmentInputRef}
                   type="file"
                   accept="image/png,image/jpeg,.png,.jpg,.jpeg"
@@ -197,10 +210,22 @@ export default function Contact() {
                       ? selectedAttachments[0].name
                       : t('contact.selectedFilesCount', { count: selectedAttachments.length })}
                 </span>
-              </span>
+                {selectedAttachments.length > 0 && (
+                  <button
+                    className="attachment-clear"
+                    type="button"
+                    disabled={sendStatus === 'sending'}
+                    aria-label={t('contact.clearAttachments')}
+                    title={t('contact.clearAttachments')}
+                    onClick={clearAttachments}
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                )}
+              </div>
               <small>{t('contact.attachmentHint')}</small>
               {attachmentError && <span className="attachment-error">{attachmentError}</span>}
-            </label>
+            </div>
             <button className="btn primary" type="submit" disabled={sendStatus === 'sending'}>
               {sendStatus === 'sending' ? t('contact.sending') : t('contact.send')}{' '}
               <Send size={17} />

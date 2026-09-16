@@ -130,6 +130,7 @@ export const pl = {
     chooseFiles: 'Wybierz pliki',
     noFilesSelected: 'Nie wybrano plików',
     selectedFilesCount: 'Wybrane pliki: {{count}}',
+    clearAttachments: 'Usuń załączniki',
     attachmentTypeError: 'Dozwolone są wyłącznie pliki PNG i JPG/JPEG.',
     attachmentSizeError: 'Łączny rozmiar plików nie może przekraczać 10 MB.',
     deliveryFrame: 'Odpowiedź usługi wysyłającej formularz',

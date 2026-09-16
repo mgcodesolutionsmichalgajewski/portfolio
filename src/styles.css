@@ -841,6 +841,19 @@ h2 {
 .contact textarea::placeholder {
   color: #9cae9b; /* Kolor tekstu i ikon dziedziczących bieżący kolor: #9cae9b. */
 }
+.attachment-field {
+  display: flex; /* Układa etykietę, kontrolkę i podpowiedź w jednej kolumnie. */
+  flex-direction: column; /* Umieszcza kolejne elementy pola jeden pod drugim. */
+  gap: 7px; /* Zachowuje takie same odstępy jak w pozostałych polach formularza. */
+  margin-bottom: 17px; /* Oddziela pole załączników od przycisku wysyłania. */
+  font-size: 12px; /* Dopasowuje wielkość etykiety do pozostałych pól formularza. */
+  font-weight: 800; /* Zachowuje spójną grubość etykiet formularza. */
+}
+.attachment-label {
+  display: block; /* Zachowuje etykietę jako pojedynczy wiersz nad kontrolką. */
+  margin-bottom: 0; /* Pozwala kontenerowi pola samodzielnie kontrolować odstępy. */
+  cursor: pointer; /* Pozwala otworzyć wybór plików również przez kliknięcie etykiety. */
+}
 .attachment-field small {
   color: #859686; /* Nadaje ograniczeniom pliku wygląd pomocniczej informacji. */
   font-size: 10px; /* Utrzymuje opis formatu i rozmiaru w dyskretnej skali. */
@@ -858,7 +871,7 @@ h2 {
   background: #fbfcfa; /* Ujednolica tło kontrolki z polami tekstowymi. */
   cursor: pointer; /* Informuje, że kliknięcie otwiera systemowy wybór plików. */
 }
-.attachment-control svg {
+.attachment-paperclip {
   position: absolute; /* Umieszcza ikonę wewnątrz pola bez zmiany jego szerokości. */
   left: 14px; /* Zachowuje taki sam odstęp jak tekst pozostałych pól. */
   z-index: 1; /* Utrzymuje ikonę nad tłem kontrolki pliku. */
@@ -896,6 +909,9 @@ h2 {
   text-overflow: ellipsis; /* Sygnalizuje skrócenie długiej nazwy wielokropkiem. */
   white-space: nowrap; /* Utrzymuje opis wybranych plików w jednym wierszu. */
 }
+.attachment-control.has-selection .attachment-selection {
+  padding-right: 46px; /* Zostawia miejsce na ikonę usuwania po prawej stronie kontrolki. */
+}
 .attachment-control:focus-within {
   border-color: #83ad70; /* Wyróżnia kontrolkę podczas obsługi klawiaturą. */
   box-shadow: 0 0 0 3px #bddbaa55; /* Dodaje widoczny obrys fokusu zgodny z pozostałymi polami. */
@@ -904,6 +920,32 @@ h2 {
   color: #ad3148; /* Wyróżnia błąd kontrastowym kolorem. */
   font-size: 11px; /* Pokazuje komunikat czytelnie bez powiększania formularza. */
   font-weight: 700; /* Zwiększa widoczność przyczyny odrzucenia pliku. */
+}
+.contact .attachment-clear {
+  position: absolute; /* Umieszcza ikonę wewnątrz prawej strony kontrolki plików. */
+  top: 50%; /* Ustawia środek przycisku na połowie wysokości kontrolki. */
+  right: 7px; /* Zachowuje niewielki odstęp od prawej krawędzi kontrolki. */
+  z-index: 3; /* Utrzymuje przycisk nad niewidocznym natywnym polem wyboru plików. */
+  display: grid; /* Ułatwia dokładne wycentrowanie ikony kosza. */
+  place-items: center; /* Ustawia ikonę na środku obszaru kliknięcia. */
+  width: 30px; /* Zapewnia kompaktowy i wygodny obszar kliknięcia. */
+  height: 30px; /* Zachowuje kwadratowy kształt przycisku. */
+  margin: 0; /* Usuwa zewnętrzne odstępy wpływające na pozycję ikony. */
+  padding: 0; /* Usuwa wewnętrzny odstęp przesuwający ikonę. */
+  transform: translateY(-50%); /* Dokładnie centruje przycisk w pionie. */
+  border: 0; /* Usuwa dodatkowe obramowanie wewnątrz pola wyboru. */
+  border-radius: 6px; /* Dopasowuje kształt przycisku do kontrolki plików. */
+  background: transparent; /* Pozostawia ikonę dyskretną w stanie spoczynku. */
+  color: #9d4051; /* Sygnalizuje usuwanie stonowanym czerwonym kolorem. */
+  cursor: pointer; /* Informuje o możliwości wyczyszczenia wybranych plików. */
+}
+.contact .attachment-clear:hover {
+  background: #ffedef; /* Wyraźniej podkreśla przycisk podczas interakcji. */
+  color: #8d293e; /* Zwiększa kontrast tekstu w stanie najechania. */
+}
+.contact .attachment-clear:focus-visible {
+  outline: 2px solid #b35a6d; /* Pokazuje wyraźny fokus podczas obsługi klawiaturą. */
+  outline-offset: 2px; /* Odsuwa obrys fokusu od krawędzi przycisku. */
 }
 .contact button {
   width: 100%; /* Szerokość elementu: 100%. */
