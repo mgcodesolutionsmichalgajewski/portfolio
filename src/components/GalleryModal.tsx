@@ -15,11 +15,11 @@ export default function GalleryModal({ gallery, onChange, onClose }: Props) {
   const closeButton = useRef<HTMLButtonElement>(null);
   const labels = t('projects.gallery', { returnObjects: true }) as {
     docusign: string[];
-    kicia: string[];
+    library: string[];
   };
   const items = getScreenshots(labels)[gallery.type];
   const current = items[gallery.index];
-  const title = gallery.type === 'kicia' ? 'Kicia Kocia Books' : 'DocuSign for Jira';
+  const title = gallery.type === 'library' ? t('projects.libraryTitle') : 'DocuSign for Jira';
   const move = (direction: number) =>
     onChange({ ...gallery, index: (gallery.index + direction + items.length) % items.length });
   useEffect(() => {

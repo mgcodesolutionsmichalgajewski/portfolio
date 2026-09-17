@@ -1267,6 +1267,54 @@ footer a:last-child {
   padding: 5px 8px; /* Wewnętrzny odstęp między treścią a krawędzią elementu: 5px 8px. */
   border-radius: 4px; /* Zaokrąglenie narożników elementu: 4px. */
 }
+.project-preview-status {
+  position: absolute; /* Umieszcza informację o statusie bezpośrednio na miniaturze projektu. */
+  top: 42px; /* Ustawia środek ukośnej wstęgi w prawym górnym rogu miniatury. */
+  right: -61px; /* Wysuwa końce wstęgi poza obszar karty dla efektu pełnego przecięcia narożnika. */
+  z-index: 4; /* Pokazuje kartę statusu nad grafiką telefonów. */
+  width: 265px; /* Tworzy szeroką wstęgę czytelną także podczas szybkiego przewijania. */
+  padding: 11px 38px 0; /* Centruje treść w widocznej części ukośnej wstęgi. */
+  background: #173e30f5; /* Zapewnia mocny kontrast wobec jasnej miniatury projektu. */
+  box-shadow: 0 10px 24px #173e3040; /* Oddziela wstęgę od grafiki wyraźnym, miękkim cieniem. */
+  color: #fff; /* Ustawia jasny kolor treści na ciemnym tle. */
+  text-align: center; /* Ustawia komunikaty symetrycznie względem osi wstęgi. */
+  text-transform: uppercase; /* Nadaje statusowi formę wyraźnego oznaczenia projektu. */
+  transform: rotate(35deg); /* Układa wstęgę po przekątnej prawego górnego narożnika. */
+  pointer-events: none; /* Pozwala kliknąć miniaturę także pod nakładką statusu. */
+}
+.project-preview-status strong {
+  display: block; /* Umieszcza najważniejszy status w osobnym wierszu. */
+  font-size: 13px; /* Zapewnia widoczność głównego komunikatu z większej odległości. */
+  font-weight: 800; /* Mocno wyróżnia prywatny charakter projektu. */
+  letter-spacing: 0.055em; /* Poprawia czytelność wersalików na ukośnej wstędze. */
+  line-height: 1.15; /* Utrzymuje zwarty wygląd głównego wiersza. */
+}
+.project-preview-status span {
+  display: block; /* Umieszcza edukacyjny charakter projektu pod głównym statusem. */
+  margin-top: 3px; /* Oddziela drugi wiersz od głównego komunikatu. */
+  font-size: 10px; /* Zachowuje czytelność uzupełniającej informacji. */
+  font-weight: 800; /* Zapewnia czytelność informacji na tle grafiki. */
+  letter-spacing: 0.12em; /* Nadaje drugiemu wierszowi wyraźny rytm typograficzny. */
+  line-height: 1.2; /* Utrzymuje kompaktowy układ wstęgi. */
+}
+.project-preview-status small {
+  display: block; /* Tworzy osobny kontrastowy pasek dla statusu publikacji. */
+  margin: 9px -38px 0; /* Rozciąga złoty pasek na całą szerokość wstęgi. */
+  padding: 6px 38px; /* Zachowuje tekst w centralnej, widocznej części ukośnego paska. */
+  background: #e1bc67; /* Wyróżnia wstrzymaną publikację kontrastowym złotym kolorem. */
+  color: #24382f; /* Zapewnia wysoki kontrast tekstu na złotym tle. */
+  font-size: 8px; /* Mieści pełny komunikat bez osłabiania głównego statusu. */
+  font-weight: 800; /* Utrzymuje czytelność małego tekstu. */
+  letter-spacing: 0.045em; /* Poprawia odczyt statusu publikacji zapisanego wersalikami. */
+  line-height: 1.2; /* Kontroluje wysokość dolnego paska. */
+}
+@media (max-width: 450px) {
+  .project-preview-status {
+    top: 34px; /* Ustawia ukośną wstęgę w widocznym miejscu na wąskiej miniaturze. */
+    right: -55px; /* Wysuwa końce wstęgi poza kartę, zachowując czytelny środek. */
+    width: 235px; /* Zapewnia wystarczającą szerokość dla mocnego komunikatu mobilnego. */
+  }
+}
 .shot-links {
   display: flex; /* Tryb rozmieszczania elementu i jego dzieci: flex. */
   flex-wrap: wrap; /* Zezwolenie na przechodzenie elementów flex do kolejnego wiersza: wrap. */

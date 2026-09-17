@@ -70,23 +70,29 @@ export const en = {
     description: 'Examples of client product work and my own experiments.',
     commercial: 'Commercial project',
     personal: 'Personal project',
+    privateProject: 'Private project',
     marketplaceScreenshots: 'Screenshots from Atlassian Marketplace',
-    iosScreenshots: 'Screenshots from the working iOS app',
+    anonymizedScreenshots: 'Anonymized prototype views',
     docusignDescription:
       'For Transition Technologies PSC, I develop an application that connects document workflows in Jira and Jira Service Management with DocuSign electronic signatures.',
     marketplaceLink: 'View on Atlassian Marketplace',
-    kiciaDescription:
-      'My React Native application for managing a collection of Kicia Kocia books. It lets users search titles, mark owned books, create a wish list and randomly choose a book to read together.',
+    libraryTitle: 'Private book library',
+    libraryDescription:
+      'An unpublished React Native prototype for managing a private book collection, creating a wish list and randomly selecting a title to read together.',
+    status: {
+      label: 'Project status',
+      private: 'Private project',
+      educational: 'Educational purpose',
+      suspended: 'Publication suspended',
+    },
     alt: {
       docusignAction: 'Sign with DocuSign action in a Jira issue',
       docusignSettings: 'Signing settings in DocuSign for Jira',
-      wishList: 'Wish list in the Kicia Kocia Books app',
-      drawing: 'Choosing a book to read in the app',
-      library: 'Kicia Kocia Books library',
+      library: 'Anonymized view of a private book cataloguing application',
     },
     gallery: {
       docusign: ['Jira action', 'Signing options', 'History'],
-      kicia: ['Library', 'Details', 'Shelf view', 'Wish list', 'What shall we read?'],
+      library: ['My books', 'Book details', 'Shelf view', 'Wish list', 'Book selection'],
     },
   },
   technologies: {

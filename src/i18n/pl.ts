@@ -70,23 +70,35 @@ export const pl = {
     description: 'Przykłady pracy przy produkcie dla klienta i własnych eksperymentów.',
     commercial: 'Projekt komercyjny',
     personal: 'Projekt własny',
+    privateProject: 'Projekt prywatny',
     marketplaceScreenshots: 'Zrzuty z Atlassian Marketplace',
-    iosScreenshots: 'Zrzuty z działającej aplikacji iOS',
+    anonymizedScreenshots: 'Zanonimizowane widoki prototypu',
     docusignDescription:
       'Dla Transition Technologies PSC rozwijam aplikację, która łączy obieg dokumentów w Jira i Jira Service Management z podpisem elektronicznym DocuSign.',
     marketplaceLink: 'Zobacz w Atlassian Marketplace',
-    kiciaDescription:
-      'Autorska aplikacja w React Native do prowadzenia kolekcji książek z serii Kicia Kocia. Pozwala wyszukiwać tytuły, oznaczać posiadane egzemplarze, tworzyć listę życzeń i losować książkę do wspólnego czytania.',
+    libraryTitle: 'Prywatna biblioteczka',
+    libraryDescription:
+      'Niepublikowany prototyp aplikacji w React Native do prowadzenia prywatnej kolekcji książek, tworzenia listy życzeń i losowania tytułu do wspólnego czytania.',
+    status: {
+      label: 'Status projektu',
+      private: 'Projekt prywatny',
+      educational: 'Charakter edukacyjny',
+      suspended: 'Publikacja wstrzymana',
+    },
     alt: {
       docusignAction: 'Akcja Sign with DocuSign w zgłoszeniu Jira',
       docusignSettings: 'Ustawienia podpisu w aplikacji DocuSign for Jira',
-      wishList: 'Lista życzeń w aplikacji Kicia Kocia Books',
-      drawing: 'Losowanie książki do czytania w aplikacji',
-      library: 'Biblioteczka Kicia Kocia Books',
+      library: 'Zanonimizowany widok prywatnej aplikacji do katalogowania książek',
     },
     gallery: {
       docusign: ['Akcja w Jira', 'Opcje podpisu', 'Historia'],
-      kicia: ['Biblioteczka', 'Szczegóły', 'Widok półki', 'Lista życzeń', 'Czytamy'],
+      library: [
+        'Moje książki',
+        'Szczegóły książki',
+        'Widok półki',
+        'Lista życzeń',
+        'Losowanie książki',
+      ],
     },
   },
   technologies: {

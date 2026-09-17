@@ -11,7 +11,7 @@ export default function Projects({
   const { t } = useTranslation();
   const galleryLabels = t('projects.gallery', { returnObjects: true }) as {
     docusign: string[];
-    kicia: string[];
+    library: string[];
   };
   const screenshots = getScreenshots(galleryLabels);
   return (
@@ -82,31 +82,40 @@ export default function Projects({
             <button
               className="project-preview-button"
               type="button"
-              onClick={() => onOpenGallery('kicia', 0)}
+              onClick={() => onOpenGallery('library', 0)}
             >
               <img
                 className="project-preview"
-                src={publicAsset('project-previews/kicia-kocia.png')}
+                src={publicAsset('private-library/preview.png')}
                 alt={t('projects.alt.library')}
               />
             </button>
-            <div className="art-note">{t('projects.iosScreenshots')}</div>
+            <div className="project-preview-status" aria-label={t('projects.status.label')}>
+              <strong>{t('projects.status.private')}</strong>
+              <span>{t('projects.status.educational')}</span>
+              <small>{t('projects.status.suspended')}</small>
+            </div>
+            <div className="art-note">{t('projects.anonymizedScreenshots')}</div>
           </div>
           <div className="project-body">
             <div className="project-meta">
-              <span>{t('projects.personal')}</span>
+              <span>{t('projects.privateProject')}</span>
               <span>02 / 02</span>
             </div>
-            <h3>Kicia Kocia Books</h3>
-            <p>{t('projects.kiciaDescription')}</p>
+            <h3>{t('projects.libraryTitle')}</h3>
+            <p>{t('projects.libraryDescription')}</p>
             <div className="tags">
               <span>React Native</span>
               <span>Expo</span>
               <span>iOS / Android</span>
             </div>
             <div className="shot-links">
-              {screenshots.kicia.map((shot, index) => (
-                <button type="button" key={shot.src} onClick={() => onOpenGallery('kicia', index)}>
+              {screenshots.library.map((shot, index) => (
+                <button
+                  type="button"
+                  key={shot.src}
+                  onClick={() => onOpenGallery('library', index)}
+                >
                   {shot.label}
                 </button>
               ))}

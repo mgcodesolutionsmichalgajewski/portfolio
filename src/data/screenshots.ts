@@ -6,27 +6,27 @@ const screenshotData = {
     { src: publicAsset('docusign/02-lokalizacja.png'), label: 'Opcje podpisu' },
     { src: publicAsset('docusign/03-historia.png'), label: 'Historia' },
   ],
-  kicia: [
-    { src: publicAsset('kicia-kocia/01-start.png'), label: 'Biblioteczka' },
-    { src: publicAsset('kicia-kocia/02-detail.png'), label: 'Szczegóły' },
-    { src: publicAsset('kicia-kocia/03-polka.png'), label: 'Widok półki' },
-    { src: publicAsset('kicia-kocia/04-lista-zyczen.png'), label: 'Lista życzeń' },
-    { src: publicAsset('kicia-kocia/05-co-czytamy.png'), label: 'Czytamy' },
+  library: [
+    { src: publicAsset('private-library/01-start-anonymized.png'), label: 'Biblioteczka' },
+    { src: publicAsset('private-library/02-detail-anonymized.png'), label: 'Szczegóły' },
+    { src: publicAsset('private-library/03-polka-anonymized.png'), label: 'Widok półki' },
+    { src: publicAsset('private-library/04-lista-zyczen-anonymized.png'), label: 'Lista życzeń' },
+    { src: publicAsset('private-library/05-co-czytamy-anonymized.png'), label: 'Czytamy' },
   ],
 };
 
-export const getScreenshots = (labels: { docusign: string[]; kicia: string[] }) => {
+export const getScreenshots = (labels: { docusign: string[]; library: string[] }) => {
   return {
     docusign: screenshotData.docusign.map((item, index) => ({
       ...item,
       label: labels.docusign[index],
     })),
-    kicia: screenshotData.kicia.map((item, index) => ({
+    library: screenshotData.library.map((item, index) => ({
       ...item,
-      label: labels.kicia[index],
+      label: labels.library[index],
     })),
   };
 };
 
 export const screenshots = screenshotData;
-export type Gallery = 'docusign' | 'kicia';
+export type Gallery = 'docusign' | 'library';
